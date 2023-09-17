@@ -37,8 +37,8 @@ CREATE TABLE repository
 CREATE TABLE repository_language_data
 (
     id INTEGER PRIMARY KEY,
-    repository_id INTEGER PRIMARY KEY,
-    language_data_id INTEGER PRIMARY KEY,
+    repository_id INTEGER NOT NULL,
+    language_data_id INTEGER NOT NULL,
     FOREIGN KEY(repository_id) REFERENCES repository(id),
     FOREIGN KEY(language_data_id) REFERENCES language_data(id)
 );
