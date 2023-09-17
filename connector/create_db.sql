@@ -24,6 +24,14 @@ CREATE TABLE IF NOT EXISTS language_data
     FOREIGN KEY(language_id) REFERENCES languages(id)
 );
 
+CREATE TABLE IF NOT EXISTS license
+(
+    id INTEGER PRIMARY KEY,
+    key TEXT NOT NULL,
+    name TEXT NOT NULL
+);
+INSERT OR IGNORE INTO license (key, name) VALUES ("None", "None");
+
 CREATE TABLE IF NOT EXISTS repository
 (
     id INTEGER PRIMARY KEY,
@@ -31,7 +39,12 @@ CREATE TABLE IF NOT EXISTS repository
     clone_url TEXT NOT NULL,
     forks_count INTEGER NOT NULL,
     stargazers_count INTEGER NOT NULL,
-    watchers_count INTEGER NOT NULL
+    watchers_count INTEGER NOT NULL,
+    pushed_at INTEGER NOT NULL,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    license_id INTEGER,
+    FOREIGN KEY(license_id) REFERENCES license(id)
 );
 
 CREATE TABLE IF NOT EXISTS repository_language_data
