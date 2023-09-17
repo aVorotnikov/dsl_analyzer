@@ -1,2 +1,7 @@
-# dsl_analyzer
-DSL uasge on GitHub Analytics
+# Анализ использования языков предметных областей в репозиториях платформы GitHub
+Анализ данных git-репозиториев платформы GitHub на предмет использования языков предментной области.
+
+## Команда
++ [Воротников Андрей](https://github.com/aVorotnikov)
++ [Кожевникова Диана](https://github.com/diakozhh)
++ [Павлов Илья](https://github.com/IlyaP01)
