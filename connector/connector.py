@@ -23,6 +23,7 @@ class Connector:
 
 
     def __get_repo_info(self, owner, repo):
+        # doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
         url = f"{Connector.url_base}/repos/{owner}/{repo}"
         response = requests.get(url, headers=self.headers).json()
         return response
@@ -36,6 +37,7 @@ class Connector:
 
 
     def __search_repos(self, query, page, sort):
+        # doc: https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28#search-repositories
         url = f"{Connector.url_base}/search/repositories"
         params = {
             "q": query,
