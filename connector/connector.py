@@ -1,5 +1,7 @@
 import requests
 import sqlite3
+import os
+import csv
 from enum import Enum
 
 
@@ -47,3 +49,21 @@ class Connector:
         }
         response = requests.get(url, headers=self.headers).json()
         return response
+
+
+    def __analyze_repo(self, owner, repo, clone_url):
+        owner_dir = f"{self.repos_dir}/{owner}"
+        if not os.path.exists(owner_dir):
+            os.mkdir(owner_dir)
+        repo_dir = f"{owner_dir}/{repo}"
+        os.system(f"git clone {clone_url} -l {repo_dir}")
+        cloc_csv = f"{owner_dir}/{repo}.csv"
+        os.system(f"{self.cloc_path} {repo_dir} --csv > {cloc_csv}")
+        with open(cloc_csv, 'r') as csvFile:
+            result = []
+            reader = csv.DictReader(csvFile)
+            for row in reader:
+                if "SUM" == row["language"]:
+                    continue
+                result.append(row)
+            return result
