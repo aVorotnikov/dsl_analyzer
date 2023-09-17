@@ -1,11 +1,11 @@
-CREATE TABLE dsl_type
+CREATE TABLE IF NOT EXISTS dsl_type
 (
     id INTEGER PRIMARY KEY,
     category TEXT NOT NULL
 );
-INSERT INTO dsl_type (category) VALUES ("None");
+INSERT OR IGNORE INTO dsl_type (category) VALUES ("None");
 
-CREATE TABLE languages
+CREATE TABLE IF NOT EXISTS languages
 (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE languages
     FOREIGN KEY(dsl_type_id) REFERENCES dsl_type(id)
 );
 
-CREATE TABLE language_data
+CREATE TABLE IF NOT EXISTS language_data
 (
     id INTEGER PRIMARY KEY,
     language_id INTEGER NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE language_data
     FOREIGN KEY(language_id) REFERENCES languages(id)
 );
 
-CREATE TABLE repository
+CREATE TABLE IF NOT EXISTS repository
 (
     id INTEGER PRIMARY KEY,
     url TEXT NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE repository
     watchers_count INTEGER NOT NULL
 );
 
-CREATE TABLE repository_language_data
+CREATE TABLE IF NOT EXISTS repository_language_data
 (
     id INTEGER PRIMARY KEY,
     repository_id INTEGER NOT NULL,
