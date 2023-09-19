@@ -35,6 +35,8 @@ INSERT OR IGNORE INTO license (key, name) VALUES ("None", "None");
 CREATE TABLE IF NOT EXISTS repository
 (
     id INTEGER PRIMARY KEY,
+    owner TEXT NOT NULL,
+    repo TEXT NOT NULL,
     url TEXT NOT NULL,
     clone_url TEXT NOT NULL,
     forks_count INTEGER NOT NULL,
@@ -44,7 +46,8 @@ CREATE TABLE IF NOT EXISTS repository
     created_at INTEGER NOT NULL,
     updated_at INTEGER NOT NULL,
     license_id INTEGER,
-    FOREIGN KEY(license_id) REFERENCES license(id)
+    FOREIGN KEY(license_id) REFERENCES license(id),
+    UNIQUE(owner, repo)
 );
 
 CREATE TABLE IF NOT EXISTS repository_language_data
