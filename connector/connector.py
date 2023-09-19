@@ -47,7 +47,7 @@ class Connector:
             "per_page": 100,
             "page": page
         }
-        response = requests.get(url, headers=self.headers).json()
+        response = requests.get(url, headers=self.headers, params=params).json()
         return response
 
 
