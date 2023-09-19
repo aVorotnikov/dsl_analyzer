@@ -8,7 +8,7 @@ INSERT OR IGNORE INTO dsl_type (category) VALUES ("None");
 CREATE TABLE IF NOT EXISTS languages
 (
     id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL,
+    name TEXT NOT NULL UNIQUE,
     dsl_type_id INTEGER NOT NULL,
     FOREIGN KEY(dsl_type_id) REFERENCES dsl_type(id)
 );
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS language_data
 CREATE TABLE IF NOT EXISTS license
 (
     id INTEGER PRIMARY KEY,
-    key TEXT NOT NULL,
+    key TEXT NOT NULL UNIQUE,
     name TEXT NOT NULL
 );
 INSERT OR IGNORE INTO license (key, name) VALUES ("None", "None");
@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS repository
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
     repo TEXT NOT NULL,
-    url TEXT NOT NULL,
-    clone_url TEXT NOT NULL,
+    url TEXT NOT NULL UNIQUE,
+    clone_url TEXT NOT NULL UNIQUE,
     forks_count INTEGER NOT NULL,
     stargazers_count INTEGER NOT NULL,
     watchers_count INTEGER NOT NULL,
