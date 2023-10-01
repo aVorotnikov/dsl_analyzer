@@ -126,7 +126,7 @@ class Connector:
     def analyze(self):
         page = 1
         while True:
-            for ch in "ab": # Connector.alphabet:
+            for ch in Connector.alphabet:
                 print(f"ANALYZING PAGE {page}, LETTER {ch}")
                 repos_info = self.__search_repos(ch, page)
                 for repo_info in repos_info["items"]:
