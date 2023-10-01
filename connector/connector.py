@@ -82,7 +82,7 @@ class Connector:
         os.makedirs(repo_dir)
         os.system(f"git clone {clone_url} -l {repo_dir}")
         cloc_json = f"{self.tmp_dir}/cloc.json"
-        os.system(f"{self.cloc_path} {self.tmp_dir} --  {self.cloc_timeout} --json > {cloc_json}")
+        os.system(f"{self.cloc_path} {self.tmp_dir} --timeout {self.cloc_timeout} --json > {cloc_json}")
         with open(cloc_json, 'r') as jsonFile:
             exclude = ["header", "SUM"]
             result = dict()
