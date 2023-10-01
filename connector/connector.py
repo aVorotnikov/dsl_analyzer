@@ -1,24 +1,28 @@
 import requests
 import os
-import csv
+import json
+import shutil
+import string
 from enum import Enum
+from elasticsearch import Elasticsearch
 
 
 class Connector:
-    url_base = "https://api.github.com/"
+    url_base = "https://api.github.com"
 
 
-    def __init__(self, data_base, repos_dir, cloc_path, token) -> None:
-        self.repos_dir = repos_dir
+    def __init__(self, tmp_dir, cloc_path, backup_dir, git_token, es_endpoint, es_id, es_password) -> None:
+        self.tmp_dir = tmp_dir
+        self.backup_dir = backup_dir
         self.cloc_path = cloc_path
-
-        self.data_base = data_base
 
         self.headers = {
             "accept" : "application/vnd.github+json",
-            "Authorization" : f"Bearer {token}",
+            "Authorization" : f"Bearer {git_token}",
             "X-GitHub-Api-Version" : "2022-11-28"
         }
+
+        self.es_client = Elasticsearch(es_endpoint, api_key=(es_id, es_password))
 
 
     def __get_repo_info(self, owner, repo):
@@ -48,19 +52,26 @@ class Connector:
         return response
 
 
-    def __analyze_repo(self, owner, repo, clone_url):
-        owner_dir = f"{self.repos_dir}/{owner}"
-        if not os.path.exists(owner_dir):
-            os.mkdir(owner_dir)
-        repo_dir = f"{owner_dir}/{repo}"
+    def __analyze_repo(self, clone_url):
+        if os.path.exists(self.tmp_dir):
+            shutil.rmtree(self.tmp_dir)
+        repo_dir = f"{self.tmp_dir}/repo"
+        os.makedirs(repo_dir)
         os.system(f"git clone {clone_url} -l {repo_dir}")
-        cloc_csv = f"{owner_dir}/{repo}.csv"
-        os.system(f"{self.cloc_path} {repo_dir} --csv > {cloc_csv}")
-        with open(cloc_csv, 'r') as csvFile:
-            result = []
-            reader = csv.DictReader(csvFile)
-            for row in reader:
-                if "SUM" == row["language"]:
+        cloc_json = f"{self.tmp_dir}/cloc.json"
+        os.system(f"{self.cloc_path} {self.tmp_dir} --json > {cloc_json}")
+        with open(cloc_json, 'r') as jsonFile:
+            exclude = ["header", "SUM"]
+            result = dict()
+            languages = json.load(jsonFile)
+            for language in languages:
+                if language in exclude:
                     continue
-                result.append(row)
-            return result
+                value = languages[language]
+                result[language] = {
+                    "files": value["nFiles"],
+                    "blank ": value["blank"],
+                    "comment": value["comment"],
+                    "code": value["code"],
+                }
+        return result
