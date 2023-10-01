@@ -9,9 +9,10 @@ from elasticsearch import Elasticsearch
 
 class Connector:
     url_base = "https://api.github.com"
+    alphabet = string.ascii_letters
 
 
-    def __init__(self, tmp_dir, cloc_path, backup_dir, git_token, es_endpoint, es_id, es_password) -> None:
+    def __init__(self, tmp_dir, backup_dir, cloc_path, git_token, es_endpoint, es_id, es_password) -> None:
         self.tmp_dir = tmp_dir
         self.backup_dir = backup_dir
         self.cloc_path = cloc_path
