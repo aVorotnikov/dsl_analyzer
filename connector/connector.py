@@ -4,6 +4,7 @@ import json
 import shutil
 import string
 import time
+import sys
 from enum import Enum
 from elasticsearch import Elasticsearch
 
@@ -13,10 +14,13 @@ class Connector:
     alphabet = string.ascii_letters
 
 
-    def __init__(self, tmp_dir, backup_dir, cloc_path, git_token, es_endpoint, es_id, es_password) -> None:
+    def __init__(self, tmp_dir, backup_dir, cloc_path, git_token,
+                 es_endpoint, es_id, es_password, cloc_timeout=60) -> None:
         self.tmp_dir = tmp_dir
         self.backup_dir = backup_dir
+
         self.cloc_path = cloc_path
+        self.cloc_timeout = cloc_timeout
 
         self.headers = {
             "accept" : "application/vnd.github+json",
@@ -37,7 +41,7 @@ class Connector:
                 break
             elif 403 == response.status_code:
                 wait_time = int(response.headers["X-Ratelimit-Reset"]) - int(time.time())
-                print(f"WAITING {wait_time} s")
+                print(f"WAITING {wait_time} s", file=sys.stderr)
                 time.sleep(wait_time)
         return response.json()
 
@@ -64,23 +68,26 @@ class Connector:
                 break
             elif 403 == response.status_code:
                 wait_time = int(response.headers["X-Ratelimit-Reset"]) - int(time.time())
-                print(f"WAITING {wait_time} s")
+                print(f"WAITING {wait_time} s", file=sys.stderr)
                 time.sleep(wait_time)
         return response.json()
 
 
-    def __analyze_repo(self, clone_url):
+    def __analyze_repo_content(self, clone_url):
         if os.path.exists(self.tmp_dir):
             shutil.rmtree(self.tmp_dir)
         repo_dir = f"{self.tmp_dir}/repo"
         os.makedirs(repo_dir)
         os.system(f"git clone {clone_url} -l {repo_dir}")
         cloc_json = f"{self.tmp_dir}/cloc.json"
-        os.system(f"{self.cloc_path} {self.tmp_dir} --json > {cloc_json}")
+        os.system(f"{self.cloc_path} {self.tmp_dir} --diff-timeout {self.cloc_timeout} --json > {cloc_json}")
         with open(cloc_json, 'r') as jsonFile:
             exclude = ["header", "SUM"]
             result = dict()
-            languages = json.load(jsonFile)
+            try:
+                languages = json.load(jsonFile)
+            except Exception:
+                return result
             for language in languages:
                 if language in exclude:
                     continue
@@ -92,3 +99,36 @@ class Connector:
                     "code": value["code"],
                 }
         return result
+
+
+    def __add_repo(self, info):
+        clone_url = info["clone_url"]
+        license = info["license"]
+        json_res = {
+            "owner": info["owner"]["login"],
+            "repo": info["name"],
+            "full_name": info["full_name"],
+            "url": info["html_url"],
+            "clone_url": clone_url,
+            "forks": info["forks_count"],
+            "stargazers": info["stargazers_count"],
+            "watchers": info["watchers_count"],
+            "pushed_at": info["updated_at"],
+            "created_at": info["updated_at"],
+            "updated_at": info["stargazers_count"],
+            "license_key": license["key"] if license else "No license",
+            "language": info["language"],
+            "languages": self.__analyze_repo_content(clone_url)
+        }
+        print(json_res)
+
+
+    def analyze(self):
+        page = 1
+        while True:
+            for ch in "ab": # Connector.alphabet:
+                print(f"ANALYZING PAGE {page}, LETTER {ch}")
+                repos_info = self.__search_repos(ch, page)
+                for repo_info in repos_info["items"]:
+                    self.__add_repo(repo_info)
+            page += 1
