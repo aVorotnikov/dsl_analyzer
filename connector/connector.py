@@ -30,6 +30,7 @@ class Connector:
         }
 
         # self.es_client = Elasticsearch(es_endpoint, api_key=(es_id, es_password))
+        self.counter = 0
 
 
     def __get_repo_info(self, owner, repo):
@@ -145,6 +146,10 @@ class Connector:
 
         with open(f"{owner_dir}/{repo}.json", 'w') as jsonFile:
             jsonFile.write(json.dumps(res))
+
+        self.counter += 1
+        if 0 == self.counter % 100:
+            print(f"Analyzed {self.counter} repositories")
 
 
     def analyze(self):
