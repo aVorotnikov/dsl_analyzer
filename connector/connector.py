@@ -102,12 +102,31 @@ class Connector:
         return result
 
 
+    def __repo_already_added(self, owner, repo):
+        # TODO: переделать на ElastiSearch
+        return os.path.exists(f"{self.backup_dir}/{owner}/{repo}.json")
+
+
     def __add_repo(self, info):
+        owner = info["owner"]["login"]
+        repo = info["name"]
+        owner_dir = f"{self.backup_dir}/{owner}"
+        if not os.path.exists(owner_dir):
+            os.makedirs(owner_dir)
+
+        if self.__repo_already_added(owner, repo):
+            return
+
         clone_url = info["clone_url"]
+        languages = self.__analyze_repo_content(clone_url)
+        # TODO: проанализировать языки + ElasticSearch
+
         license = info["license"]
-        json_res = {
-            "owner": info["owner"]["login"],
-            "repo": info["name"],
+        # TODO: проанализировать лицензия + ElasticSearch
+
+        res = {
+            "owner": owner,
+            "repo": repo,
             "full_name": info["full_name"],
             "url": info["html_url"],
             "clone_url": clone_url,
@@ -119,9 +138,13 @@ class Connector:
             "updated_at": info["stargazers_count"],
             "license_key": license["key"] if license else "No license",
             "language": info["language"],
-            "languages": self.__analyze_repo_content(clone_url)
+            "languages": languages
         }
-        print(json_res)
+
+        # TODO: добавить в ElasticSearch
+
+        with open(f"{owner_dir}/{repo}.json", 'w') as jsonFile:
+            jsonFile.write(json.dumps(res))
 
 
     def analyze(self):
