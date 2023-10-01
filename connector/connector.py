@@ -6,6 +6,7 @@ import string
 import time
 import sys
 from enum import Enum
+from argparse import ArgumentParser
 from elasticsearch import Elasticsearch
 
 
@@ -15,7 +16,7 @@ class Connector:
 
 
     def __init__(self, tmp_dir, backup_dir, cloc_path, git_token,
-                 es_endpoint, es_id, es_password, cloc_timeout=60) -> None:
+                 es_id, es_password, es_endpoint, cloc_timeout=60) -> None:
         self.tmp_dir = tmp_dir
         self.backup_dir = backup_dir
 
@@ -28,7 +29,7 @@ class Connector:
             "X-GitHub-Api-Version" : "2022-11-28"
         }
 
-        self.es_client = Elasticsearch(es_endpoint, api_key=(es_id, es_password))
+        # self.es_client = Elasticsearch(es_endpoint, api_key=(es_id, es_password))
 
 
     def __get_repo_info(self, owner, repo):
@@ -132,3 +133,22 @@ class Connector:
                 for repo_info in repos_info["items"]:
                     self.__add_repo(repo_info)
             page += 1
+
+
+if __name__ == "__main__":
+    parser = ArgumentParser(
+        prog="connector.py",
+        description="Connector for GitHub API")
+    parser.add_argument("-t", "--tmp", type=str, help="Temporary directory")
+    parser.add_argument("-b", "--backup", type=str, help="Backup directory")
+    parser.add_argument("-c", "--cloc", type=str, help="Cloc executable path")
+    parser.add_argument("-g", "--token", type=str, help="GitHub token")
+    parser.add_argument("-i", "--id", type=str, help="ElasticSearch ID")
+    parser.add_argument("-p", "--password", type=str, help="ElasticSearch password")
+    parser.add_argument("-e", "--es", type=str, help="ElasticSearch entry point")
+    parser.add_argument("-o", "--timeout", type=int, default=60, help="Cloc analyzer timeout")
+    args = parser.parse_args()
+
+    connector = Connector(args.tmp, args.backup, args.cloc, args.token,
+                          args.id, args.password, args.es, args.timeout)
+    connector.analyze()
