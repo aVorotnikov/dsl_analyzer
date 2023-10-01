@@ -3,6 +3,7 @@ import os
 import json
 import shutil
 import string
+import time
 from enum import Enum
 from elasticsearch import Elasticsearch
 
@@ -29,8 +30,16 @@ class Connector:
     def __get_repo_info(self, owner, repo):
         # doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
         url = f"{Connector.url_base}/repos/{owner}/{repo}"
-        response = requests.get(url, headers=self.headers).json()
-        return response
+        response = requests.get(url, headers=self.headers)
+        while True:
+            response = requests.get(url, headers=self.headers)
+            if 200 == response.status_code:
+                break
+            elif 403 == response.status_code:
+                wait_time = int(response.headers["X-Ratelimit-Reset"]) - int(time.time())
+                print(f"WAITING {wait_time} s")
+                time.sleep(wait_time)
+        return response.json()
 
 
     class SortType(Enum):
@@ -40,7 +49,7 @@ class Connector:
         UPDATED = "updated"
 
 
-    def __search_repos(self, query, page, sort):
+    def __search_repos(self, query, page, sort=SortType.STARS):
         # doc: https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28#search-repositories
         url = f"{Connector.url_base}/search/repositories"
         params = {
@@ -49,8 +58,15 @@ class Connector:
             "per_page": 100,
             "page": page
         }
-        response = requests.get(url, headers=self.headers, params=params).json()
-        return response
+        while True:
+            response = requests.get(url, headers=self.headers, params=params)
+            if 200 == response.status_code:
+                break
+            elif 403 == response.status_code:
+                wait_time = int(response.headers["X-Ratelimit-Reset"]) - int(time.time())
+                print(f"WAITING {wait_time} s")
+                time.sleep(wait_time)
+        return response.json()
 
 
     def __analyze_repo(self, clone_url):
