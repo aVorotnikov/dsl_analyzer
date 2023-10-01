@@ -1,5 +1,4 @@
 import requests
-import sqlite3
 import os
 import csv
 from enum import Enum
@@ -14,8 +13,6 @@ class Connector:
         self.cloc_path = cloc_path
 
         self.data_base = data_base
-        self.connection = sqlite3.connect(data_base)
-        self.cursor = self.connection.cursor()
 
         self.headers = {
             "accept" : "application/vnd.github+json",
