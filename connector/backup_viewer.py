@@ -17,7 +17,6 @@ class BackupType(Enum):
 
 
 def __read_jsons(dir):
-    print(dir)
     licenses = []
     for filename in os.listdir(dir):
         filepath = f"{dir}/{filename}"
