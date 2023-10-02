@@ -1,0 +1,290 @@
+name,type
+ABAP,GPL
+ActionScript,GPL
+Ada,GPL
+ADSO/IDSM,GPL
+Agda,GPL
+AMPLE,GPL
+Ant,GPL
+ANTLR Grammar,GPL
+Apex Class,GPL
+Apex Trigger,GPL
+APL,GPL
+Arduino Sketch,GPL
+AsciiDoc,GPL
+ASP,GPL
+ASP.NET,GPL
+AspectJ,GPL
+Assembly,GPL
+AutoHotkey,GPL
+awk,GPL
+Bazel,GPL
+BizTalk Orchestration,GPL
+BizTalk Pipeline,GPL
+Blade,GPL
+Bourne Again Shell,GPL
+Bourne Shell,GPL
+BrightScript,GPL
+builder,GPL
+C,GPL
+C Shell,GPL
+C#,GPL
+C# Designer,GPL
+C++,GPL
+C/C++ Header,GPL
+Cake Build Script,GPL
+CCS,GPL
+Chapel,GPL
+Clean,GPL
+Clojure,GPL
+ClojureC,GPL
+ClojureScript,GPL
+CMake,GPL
+COBOL,GPL
+CoffeeScript,GPL
+ColdFusion,GPL
+ColdFusion CFScript,GPL
+Coq,GPL
+Crystal,GPL
+CSON,GPL
+CSS,GPL
+CSV,GPL
+Cucumber,GPL
+CUDA,GPL
+Cython,GPL
+D,GPL
+DAL,GPL
+Dart,GPL
+Delphi Form,GPL
+dhall,GPL
+DIET,GPL
+diff,GPL
+DITA,GPL
+Dockerfile,GPL
+DOORS Extension Language,GPL
+DOS Batch,GPL
+Drools,GPL
+DTD,GPL
+dtrace,GPL
+ECPP,GPL
+EEx,GPL
+EJS,GPL
+Elixir,GPL
+Elm,GPL
+Embedded Crystal,GPL
+ERB,GPL
+Erlang,GPL
+Expect,GPL
+F#,GPL
+F# Script,GPL
+Fennel,GPL
+Fish Shell,GPL
+Focus,GPL
+Forth,GPL
+Fortran 77,GPL
+Fortran 90,GPL
+Fortran 95,GPL
+Freemarker Template,GPL
+FXML,GPL
+GDScript,GPL
+Gencat NLS,GPL
+Glade,GPL
+Gleam,GPL
+GLSL,GPL
+Go,GPL
+Godot Resource,GPL
+Godot Scene,GPL
+Gradle,GPL
+Grails,GPL
+GraphQL,GPL
+Groovy,GPL
+Haml,GPL
+Handlebars,GPL
+Harbour,GPL
+Haskell,GPL
+Haxe,GPL
+HCL,GPL
+HLSL,GPL
+Hoon,GPL
+HTML,GPL
+IDL,GPL
+Idris,GPL
+Igor Pro,GPL
+Imba,GPL
+INI,GPL
+InstallShield,GPL
+IPL,GPL
+Java,GPL
+JavaScript,GPL
+JavaServer Faces,GPL
+JCL,GPL
+Jinja Template,GPL
+JSON,GPL
+JSON5,GPL
+JSP,GPL
+JSX,GPL
+Julia,GPL
+Juniper Junos,GPL
+Jupyter Notebook,GPL
+Kermit,GPL
+Korn Shell,GPL
+Kotlin,GPL
+Lean,GPL
+LESS,GPL
+lex,GPL
+LFE,GPL
+liquid,GPL
+Lisp,GPL
+Literate Idris,GPL
+LiveLink OScript,GPL
+LLVM IR,GPL
+Logos,GPL
+Logtalk,GPL
+Lua,GPL
+m4,GPL
+make,GPL
+Mako,GPL
+Markdown,GPL
+Mathematica,GPL
+MATLAB,GPL
+Maven,GPL
+Meson,GPL
+Modula3,GPL
+Mojo,GPL
+MSBuild script,GPL
+MUMPS,GPL
+Mustache,GPL
+MXML,GPL
+NAnt script,GPL
+NASTRAN DMAP,GPL
+Nemerle,GPL
+Nim,GPL
+Nix,GPL
+Objective-C,GPL
+Objective-C++,GPL
+OCaml,GPL
+Odin,GPL
+OpenCL,GPL
+Oracle Forms,GPL
+Oracle PL/SQL,GPL
+Oracle Reports,GPL
+Pascal,GPL
+Pascal/Puppet,GPL
+Patran Command Language,GPL
+Perl,GPL
+PHP,GPL
+PHP/Pascal,GPL
+Pig Latin,GPL
+PL/I,GPL
+PL/M,GPL
+PO File,GPL
+PowerBuilder,GPL
+PowerShell,GPL
+ProGuard,GPL
+Prolog,GPL
+Protocol Buffers,GPL
+Pug,GPL
+PureScript,GPL
+Python,GPL
+QML,GPL
+Qt,GPL
+Qt Linguist,GPL
+Qt Project,GPL
+R,GPL
+Racket,GPL
+Raku,GPL
+Raku/Prolog,GPL
+RAML,GPL
+RapydScript,GPL
+Razor,GPL
+ReasonML,GPL
+ReScript,GPL
+reStructuredText,GPL
+Rexx,GPL
+Ring,GPL
+Rmd,GPL
+RobotFramework,GPL
+Ruby,GPL
+Ruby HTML,GPL
+Rust,GPL
+SaltStack,GPL
+SAS,GPL
+Sass,GPL
+Scala,GPL
+Scheme,GPL
+sed,GPL
+SKILL,GPL
+SKILL++,GPL
+Slice,GPL
+Slim,GPL
+Smalltalk,GPL
+Smarty,GPL
+Softbridge Basic,GPL
+Solidity,GPL
+SparForte,GPL
+Specman e,GPL
+SQL,GPL
+SQL Data,GPL
+SQL Stored Procedure,GPL
+Squirrel,GPL
+Standard ML,GPL
+Starlark,GPL
+Stata,GPL
+Stylus,GPL
+SugarSS,GPL
+Svelte,GPL
+SVG,GPL
+Swift,GPL
+SWIG,GPL
+Tcl/Tk,GPL
+Teamcenter met,GPL
+Teamcenter mth,GPL
+TeX,GPL
+Thrift,GPL
+TITAN Project File Information,GPL
+Titanium Style Sheet,GPL
+TNSDL,GPL
+TOML,GPL
+TTCN,GPL
+Twig,GPL
+TypeScript,GPL
+Unity-Prefab,GPL
+Vala,GPL
+Vala Header,GPL
+VB for Applications,GPL
+Velocity Template Language,GPL
+Verilog-SystemVerilog,GPL
+VHDL,GPL
+vim script,GPL
+Visual Basic,GPL
+Visual Basic .NET,GPL
+Visual Basic Script,GPL
+Visual Fox Pro,GPL
+Visual Studio Solution,GPL
+Visualforce Component,GPL
+Visualforce Page,GPL
+Vuejs Component,GPL
+Web Services Description,GPL
+WebAssembly,GPL
+Windows Message File,GPL
+Windows Module Definition,GPL
+Windows Resource File,GPL
+WiX include,GPL
+WiX source,GPL
+WiX string localization,GPL
+WXML,GPL
+WXSS,GPL
+XAML,GPL
+xBase,GPL
+xBase Header,GPL
+XHTML,GPL
+XMI,GPL
+XML,GPL
+XQuery,GPL
+XSD,GPL
+XSLT,GPL
+Xtend,GPL
+yacc,GPL
+YAML,GPL
+Zig,GPL
+zsh,GPL
