@@ -9,7 +9,7 @@ from csv import DictWriter
 class BackupType(Enum):
     REPOS = 'repos'
     LANGS = 'langs'
-    LICENCES = 'licenses'
+    LICENSES = 'licenses'
 
 
     def __str__(self):
@@ -42,7 +42,7 @@ def __print_jsons_simple(dir):
 
 
 def print_licenses(dir):
-    __print_jsons_simple(f"{dir}/licences")
+    __print_jsons_simple(f"{dir}/licenses")
 
 
 def print_langs(dir):
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     choicer = {
         BackupType.REPOS: print_repos,
         BackupType.LANGS: print_langs,
-        BackupType.LICENCES: print_licenses
+        BackupType.LICENSES: print_licenses
     }
 
     parser = ArgumentParser(
