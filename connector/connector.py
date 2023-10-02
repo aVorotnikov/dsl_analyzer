@@ -129,7 +129,7 @@ class Connector:
 
     def __language_already_added(self, name):
         # TODO: переделать на ElasticSearch
-        return os.path.exists(f"{self.langs_dir}/{base64.urlsafe_b64encode(name.encode('ascii'))}.json")
+        return os.path.exists(f"{self.langs_dir}/{str(base64.urlsafe_b64encode(name.encode('ascii')))[2:-1]}.json")
 
 
     def __add_repo(self, info):
@@ -152,7 +152,8 @@ class Connector:
                 "type": "GPL"
             })
             # TODO: добавить язык в ElasticSearch
-            with open(f"{self.langs_dir}/{base64.urlsafe_b64encode(lang.encode('ascii'))}.json", 'w') as jsonFile:
+            with open(f"{self.langs_dir}/"
+                      f"{str(base64.urlsafe_b64encode(lang.encode('ascii')))[2:-1]}.json", 'w') as jsonFile:
                 jsonFile.write(langJson)
 
         license = info["license"]
