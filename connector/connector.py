@@ -5,6 +5,7 @@ import shutil
 import string
 import time
 import sys
+import base64
 from enum import Enum
 from argparse import ArgumentParser
 from elasticsearch import Elasticsearch
@@ -18,7 +19,17 @@ class Connector:
     def __init__(self, tmp_dir, backup_dir, cloc_path, git_token,
                  es_id, es_password, es_endpoint, cloc_timeout=60) -> None:
         self.tmp_dir = tmp_dir
+
         self.backup_dir = backup_dir
+        self.repos_dir = f"{backup_dir}/repos/"
+        if not os.path.exists(self.repos_dir):
+            os.makedirs(self.repos_dir)
+        self.langs_dir = f"{backup_dir}/langs/"
+        if not os.path.exists(self.langs_dir):
+            os.makedirs(self.langs_dir)
+        self.licences_dir = f"{backup_dir}/licences/"
+        if not os.path.exists(self.licences_dir):
+            os.makedirs(self.licences_dir)
 
         self.cloc_path = cloc_path
         self.cloc_timeout = cloc_timeout
@@ -105,13 +116,23 @@ class Connector:
 
     def __repo_already_added(self, owner, repo):
         # TODO: переделать на ElastiSearch
-        return os.path.exists(f"{self.backup_dir}/{owner}/{repo}.json")
+        return os.path.exists(f"{self.repos_dir}/{owner}/{repo}.json")
+
+
+    def __licence_already_added(self, key):
+        # TODO: переделать на ElastiSearch
+        return os.path.exists(f"{self.licences_dir}/{key}.json")
+
+
+    def __language_already_added(self, name):
+        # TODO: переделать на ElastiSearch
+        return os.path.exists(f"{self.langs_dir}/{base64.urlsafe_b64encode(name.encode('ascii'))}.json")
 
 
     def __add_repo(self, info):
         owner = info["owner"]["login"]
         repo = info["name"]
-        owner_dir = f"{self.backup_dir}/{owner}"
+        owner_dir = f"{self.repos_dir}/{owner}"
         if not os.path.exists(owner_dir):
             os.makedirs(owner_dir)
 
@@ -120,12 +141,25 @@ class Connector:
 
         clone_url = info["clone_url"]
         languages = self.__analyze_repo_content(clone_url)
-        # TODO: проанализировать языки + ElasticSearch
+        for lang in languages.keys():
+            if self.__language_already_added(lang):
+                continue
+            langJson = json.dumps({
+                "name": lang,
+                "type": "GPL"
+            })
+            # TODO: добавить язык в ElasticSearch
+            with open(f"{self.langs_dir}/{base64.urlsafe_b64encode(lang.encode('ascii'))}.json", 'w') as jsonFile:
+                jsonFile.write(langJson)
 
         license = info["license"]
-        # TODO: проанализировать лицензия + ElasticSearch
+        if license and not self.__licence_already_added(license["key"]):
+            licenseJson = json.dumps(license)
+            # TODO: добавить лицензию в ElasticSearch
+            with open(f"{self.licences_dir}/{license['key']}.json", 'w') as jsonFile:
+                jsonFile.write(licenseJson)
 
-        res = {
+        res = json.dumps({
             "owner": owner,
             "repo": repo,
             "full_name": info["full_name"],
@@ -140,15 +174,15 @@ class Connector:
             "license_key": license["key"] if license else "No license",
             "language": info["language"],
             "languages": languages
-        }
+        })
 
-        # TODO: добавить в ElasticSearch
+        # TODO: добавить репозиторий в ElasticSearch
 
         with open(f"{owner_dir}/{repo}.json", 'w') as jsonFile:
-            jsonFile.write(json.dumps(res))
+            jsonFile.write(res)
 
         self.counter += 1
-        if 0 == self.counter % 100:
+        if 0 == self.counter % 10:
             print(f"Analyzed {self.counter} repositories")
 
 
