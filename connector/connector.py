@@ -165,6 +165,7 @@ class Connector:
             "full_name": info["full_name"],
             "url": info["html_url"],
             "clone_url": clone_url,
+            "size": info["size"],
             "forks": info["forks_count"],
             "stargazers": info["stargazers_count"],
             "watchers": info["watchers_count"],
@@ -175,6 +176,7 @@ class Connector:
             "language": info["language"],
             "languages": languages
         })
+        print(f"SIZE OF REPO: {info['size']}")
 
         # TODO: добавить репозиторий в ElasticSearch
 
