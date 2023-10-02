@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+
+
 from argparse import ArgumentParser
 from enum import Enum
 import os
