@@ -29,23 +29,26 @@ def __read_jsons(dir):
     return licenses
 
 
-def __print_jsons_simple(dir):
+def __print_jsons_simple(dir, fieldnames=None):
     jsons = __read_jsons(dir)
-    fieldnames = set()
-    for jsonObject in jsons:
-        for key in jsonObject.keys():
-            fieldnames.add(key)
-    writer = DictWriter(sys.stdout, fieldnames=fieldnames)
+    if fieldnames is not None:
+        fields = fieldnames
+    else:
+        fields = set()
+        for jsonObject in jsons:
+            for key in jsonObject.keys():
+                fields.add(key)
+    writer = DictWriter(sys.stdout, fieldnames=fields)
     writer.writeheader()
     writer.writerows(jsons)
 
 
 def print_licenses(dir):
-    __print_jsons_simple(f"{dir}/licenses")
+    __print_jsons_simple(f"{dir}/licenses", ["key", "name", "spdx_id", "url", "node_id"])
 
 
 def print_langs(dir):
-    __print_jsons_simple(f"{dir}/langs")
+    __print_jsons_simple(f"{dir}/langs", ["name", "type"])
 
 
 def print_repos(dir):
