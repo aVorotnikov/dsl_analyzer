@@ -27,9 +27,9 @@ class Connector:
         self.langs_dir = f"{backup_dir}/langs/"
         if not os.path.exists(self.langs_dir):
             os.makedirs(self.langs_dir)
-        self.licences_dir = f"{backup_dir}/licences/"
-        if not os.path.exists(self.licences_dir):
-            os.makedirs(self.licences_dir)
+        self.licenses_dir = f"{backup_dir}/licenses/"
+        if not os.path.exists(self.licenses_dir):
+            os.makedirs(self.licenses_dir)
 
         self.cloc_path = cloc_path
         self.cloc_timeout = cloc_timeout
@@ -119,9 +119,9 @@ class Connector:
         return os.path.exists(f"{self.repos_dir}/{owner}/{repo}.json")
 
 
-    def __licence_already_added(self, key):
+    def __license_already_added(self, key):
         # TODO: переделать на ElasticSearch
-        return os.path.exists(f"{self.licences_dir}/{key}.json")
+        return os.path.exists(f"{self.licenses_dir}/{key}.json")
 
 
     def __language_already_added(self, name):
@@ -153,10 +153,10 @@ class Connector:
                 jsonFile.write(langJson)
 
         license = info["license"]
-        if license and not self.__licence_already_added(license["key"]):
+        if license and not self.__license_already_added(license["key"]):
             licenseJson = json.dumps(license)
             # TODO: добавить лицензию в ElasticSearch
-            with open(f"{self.licences_dir}/{license['key']}.json", 'w') as jsonFile:
+            with open(f"{self.licenses_dir}/{license['key']}.json", 'w') as jsonFile:
                 jsonFile.write(licenseJson)
 
         res = json.dumps({
