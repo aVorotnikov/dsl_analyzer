@@ -52,7 +52,22 @@ def print_langs(dir):
 
 
 def print_repos(dir):
-    print("No")
+    parent_dir = f"{dir}/repos"
+    writer = DictWriter(sys.stdout, extrasaction='ignore', fieldnames=[
+        "owner",
+        "repo",
+        "language",
+        "forks",
+        "stargazers",
+        "watchers",
+        "license_key"
+    ])
+    writer.writeheader()
+    for subdir in os.listdir(parent_dir):
+        subdirPath = f"{parent_dir}/{subdir}"
+        if os.path.isdir(subdirPath):
+            jsons = __read_jsons(subdirPath)
+            writer.writerows(jsons)
 
 
 if __name__ == "__main__":
