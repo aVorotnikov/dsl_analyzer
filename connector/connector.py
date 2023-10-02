@@ -115,17 +115,17 @@ class Connector:
 
 
     def __repo_already_added(self, owner, repo):
-        # TODO: переделать на ElastiSearch
+        # TODO: переделать на ElasticSearch
         return os.path.exists(f"{self.repos_dir}/{owner}/{repo}.json")
 
 
     def __licence_already_added(self, key):
-        # TODO: переделать на ElastiSearch
+        # TODO: переделать на ElasticSearch
         return os.path.exists(f"{self.licences_dir}/{key}.json")
 
 
     def __language_already_added(self, name):
-        # TODO: переделать на ElastiSearch
+        # TODO: переделать на ElasticSearch
         return os.path.exists(f"{self.langs_dir}/{base64.urlsafe_b64encode(name.encode('ascii'))}.json")
 
 
@@ -176,7 +176,6 @@ class Connector:
             "language": info["language"],
             "languages": languages
         })
-        print(f"SIZE OF REPO: {info['size']}")
 
         # TODO: добавить репозиторий в ElasticSearch
 
