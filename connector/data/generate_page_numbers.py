@@ -41,6 +41,7 @@ if __name__ == "__main__":
 
     writer = DictWriter(sys.stdout, fieldnames=["query", "number"])
     writer.writeheader()
+    alphabet = string.ascii_letters + string.digits
     for ch in string.ascii_letters:
         writer.writerow({
             "query": ch,
