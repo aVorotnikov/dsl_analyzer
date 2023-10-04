@@ -81,8 +81,8 @@ if __name__ == "__main__":
     }
 
     parser = ArgumentParser(
-        prog="connector.py",
-        description="backup_viewer.py")
+        prog="backup_viewer.py",
+        description="View backup")
     parser.add_argument("-t", "--type", type=BackupType, choices=list(BackupType), help="Data type")
     parser.add_argument("-d", "--dir", type=str, help="Backup directory")
     args = parser.parse_args()
