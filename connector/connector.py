@@ -191,8 +191,8 @@ class Connector:
             print(f"Analyzed {self.counter} repositories")
 
 
-    def analyze(self):
-        page = 1
+    def analyze(self, start_page):
+        page = start_page
         while True:
             for ch in Connector.alphabet:
                 print(f"ANALYZING PAGE {page}, LETTER {ch}")
@@ -214,8 +214,9 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--password", type=str, help="ElasticSearch password")
     parser.add_argument("-e", "--es", type=str, help="ElasticSearch entry point")
     parser.add_argument("-o", "--timeout", type=int, default=60, help="Cloc analyzer timeout")
+    parser.add_argument("-s", "--start", type=int, default=1, help="Start page")
     args = parser.parse_args()
 
     connector = Connector(args.tmp, args.backup, args.cloc, args.token,
                           args.id, args.password, args.es, args.timeout)
-    connector.analyze()
+    connector.analyze(args.start)
