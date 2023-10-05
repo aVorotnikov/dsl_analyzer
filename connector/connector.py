@@ -101,7 +101,7 @@ class Connector:
             shutil.rmtree(self.tmp_dir)
         repo_dir = f"{self.tmp_dir}/repo"
         os.makedirs(repo_dir)
-        os.system(f"git clone {clone_url} -l {repo_dir}")
+        os.system(f"git clone {clone_url} {repo_dir}")
         cloc_json = f"{self.tmp_dir}/cloc.json"
         os.system(f"{self.cloc_path} {self.tmp_dir} --timeout {self.cloc_timeout} --json > {cloc_json}")
         with open(cloc_json, 'r') as jsonFile:
