@@ -16,7 +16,7 @@ from elasticsearch import Elasticsearch
 
 class Connector:
     url_base = "https://api.github.com"
-    alphabet = string.ascii_letters
+    alphabet = string.ascii_letters + string.digits
 
 
     def __init__(self, tmp_dir, backup_dir, cloc_path, git_token,
@@ -69,7 +69,12 @@ class Connector:
         UPDATED = "updated"
 
 
-    def __search_repos(self, query, page, sort=SortType.STARS):
+    class OrderType(Enum):
+        DESC = "desc"
+        ASC = "asc"
+
+
+    def __search_repos(self, query, page, sort=SortType.STARS, order=None):
         # doc: https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28#search-repositories
         url = f"{Connector.url_base}/search/repositories"
         params = {
@@ -78,6 +83,8 @@ class Connector:
             "per_page": 100,
             "page": page
         }
+        if order is not None:
+            params["order"] = order.value
         while True:
             response = requests.get(url, headers=self.headers, params=params)
             if 200 == response.status_code:
@@ -191,15 +198,13 @@ class Connector:
             print(f"Analyzed {self.counter} repositories")
 
 
-    def analyze(self, start_page):
-        page = start_page
-        while True:
+    def analyze(self):
+        for page in range(1, 11):
             for ch in Connector.alphabet:
                 print(f"ANALYZING PAGE {page}, LETTER {ch}")
                 repos_info = self.__search_repos(ch, page)
                 for repo_info in repos_info["items"]:
                     self.__add_repo(repo_info)
-            page += 1
 
 
 if __name__ == "__main__":
@@ -214,9 +219,8 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--password", type=str, help="ElasticSearch password")
     parser.add_argument("-e", "--es", type=str, help="ElasticSearch entry point")
     parser.add_argument("-o", "--timeout", type=int, default=60, help="Cloc analyzer timeout")
-    parser.add_argument("-s", "--start", type=int, default=1, help="Start page")
     args = parser.parse_args()
 
     connector = Connector(args.tmp, args.backup, args.cloc, args.token,
                           args.id, args.password, args.es, args.timeout)
-    connector.analyze(args.start)
+    connector.analyze()
