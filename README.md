@@ -5,3 +5,6 @@
 + [Воротников Андрей](https://github.com/aVorotnikov)
 + [Кожевникова Диана](https://github.com/diakozhh)
 + [Павлов Илья](https://github.com/IlyaP01)
+
+## Документы
++ [Решаемые аналитические задачи](docs/tasks.md)
