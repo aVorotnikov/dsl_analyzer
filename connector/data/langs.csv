@@ -31,7 +31,7 @@ C#,GPL
 C# Designer,GUI
 C# Generated,GPL
 C++,GPL
-Cairo,GUI
+Cairo,image
 Cake Build Script,build
 Carbon,GPL
 CCS,math
@@ -121,18 +121,18 @@ Igor Pro,math
 Imba,GPL
 INI,markup
 InstallShield,special
-IPL,GUI
-Jai,GPL
-Jam,GPL
+IPL,image
+Jai,image
+Jam,build
 Java,GPL
 JavaScript,GPL
-JavaServer Faces,GPL
-JCL,GPL
-Jinja Template,GPL
+JavaServer Faces,web
+JCL,script
+Jinja Template,web
 JSON,data interchange
 JSON5,data interchange
-JSP,GPL
-JSX,GPL
+JSP,web
+JSX,markup
 Julia,GPL
 Jupyter Notebook,GPL
 Kermit,GPL
