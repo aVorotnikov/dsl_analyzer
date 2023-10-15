@@ -136,17 +136,17 @@ JSX,markup
 Julia,GPL
 Jupyter Notebook,GPL
 Kermit,GPL
-Korn Shell,GPL
+Korn Shell,script
 Kotlin,GPL
-kvlang,GPL
-Lean,GPL
-LESS,GPL
+kvlang,GUI
+Lean,math
+LESS,GUI
 lex,language construction
-LFE,GPL
-Linker Script,GPL
-liquid,GPL
+LFE,script
+Linker Script,build
+liquid,markup
 Lisp,GPL
-LLVM IR,GPL
+LLVM IR,language construction
 Logos,GPL
 Logtalk,GPL
 Lua,GPL
@@ -156,22 +156,22 @@ Mako,GPL
 Markdown,markup
 Mathematica,math
 MATLAB,math
-Maven,GPL
-Mercury,GPL
-Meson,GPL
-Metal,GPL
+Maven,build
+Mercury,math
+Meson,build
+Metal,3d
 Modula3,GPL
-Mojo,GPL
+Mojo,web
 MSBuild script,build
-MUMPS,GPL
-Mustache,GPL
-MXML,GPL
-NAnt script,GPL
+MUMPS,data base
+Mustache,markup
+MXML,markup
+NAnt script,build
 Nemerle,GPL
 NetLogo,GPL
 Nim,GPL
 Nix,GPL
-Nunjucks,GPL
+Nunjucks,markup
 Objective-C,GPL
 Objective-C++,GPL
 OCaml,GPL
