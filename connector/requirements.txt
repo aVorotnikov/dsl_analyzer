@@ -1,2 +1,2 @@
 requests==2.25.1
-elasticsearch==8.10.0
+opensearch-py==2.3.2
