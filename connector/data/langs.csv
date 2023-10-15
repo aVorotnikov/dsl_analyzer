@@ -1,23 +1,23 @@
 name,type
-ABAP,GPL
-ActionScript,GPL
+ABAP,data base
+ActionScript,web
 Ada,GPL
 Agda,GPL
 AMPLE,GPL
-Ant,GPL
-ANTLR Grammar,GPL
-Apex Class,GPL
-Apex Trigger,GPL
+Ant,build
+ANTLR Grammar,language construction
+Apex Class,salesform
+Apex Trigger,salesform
 APL,GPL
-Arduino Sketch,GPL
-AsciiDoc,GPL
-ASP,GPL
-ASP.NET,GPL
+Arduino Sketch,robots
+AsciiDoc,markup
+ASP,web
+ASP.NET,web
 AspectJ,GPL
 Assembly,GPL
-Asymptote,GPL
-AutoHotkey,GPL
-awk,GPL
+Asymptote,math
+AutoHotkey,script
+awk,text
 Bazel,GPL
 Blade,GPL
 Bourne Again Shell,GPL
