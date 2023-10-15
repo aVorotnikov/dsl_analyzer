@@ -105,8 +105,8 @@ Gradle,build
 Grails,web
 GraphQL,data base
 Groovy,GPL
-Haml,GPL
-Handlebars,GPL
+Haml,markup
+Handlebars,markup
 Harbour,GPL
 Haskell,GPL
 Haxe,GPL
@@ -114,14 +114,14 @@ HCL,GPL
 HLSL,shaders
 Hoon,GPL
 HTML,markup
-HTML EEx,GPL
-IDL,GPL
+HTML EEx,markup
+IDL,interface
 Idris,GPL
-Igor Pro,GPL
+Igor Pro,math
 Imba,GPL
-INI,GPL
-InstallShield,GPL
-IPL,GPL
+INI,markup
+InstallShield,special
+IPL,GUI
 Jai,GPL
 Jam,GPL
 Java,GPL
@@ -258,7 +258,7 @@ Tcl/Tk,GPL
 TEAL,GPL
 TeX,markup
 Text,GPL
-Thrift,GPL
+Thrift,interface
 Titanium Style Sheet,GPL
 TNSDL,GPL
 TOML,GPL
