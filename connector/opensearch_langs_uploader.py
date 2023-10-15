@@ -46,7 +46,7 @@ def main(ip, port, login, token, csv, create_index):
                 index = index_name,
                 body = row,
                 id = id,
-                refresh = False
+                refresh = True
             )
             print(f"Adding document: {response}")
             print(response)
