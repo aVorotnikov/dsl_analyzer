@@ -139,7 +139,7 @@ Kermit,GPL
 Korn Shell,script
 Kotlin,GPL
 kvlang,GUI
-Lean,math
+Lean,logic
 LESS,GUI
 lex,language construction
 LFE,script
@@ -198,7 +198,7 @@ Pony,web
 PowerBuilder,diagram
 PowerShell,script
 ProGuard,special
-Prolog,math
+Prolog,logic
 Properties,config
 Protocol Buffers,serialization
 Pug,web
