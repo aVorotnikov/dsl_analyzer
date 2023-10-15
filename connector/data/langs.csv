@@ -212,18 +212,18 @@ Qt Project,GUI
 R,GPL
 Racket,GPL
 Raku,GPL
-RAML,GPL
+RAML,serialization
 RapydScript,GPL
-Razor,GPL
+Razor,markup
 ReasonML,GPL
-ReScript,GPL
-reStructuredText,GPL
+ReScript,web
+reStructuredText,markup
 Rexx,GPL
-Ring,GPL
-Rmd,GPL
-RobotFramework,GPL
+Ring,web
+Rmd,markup
+RobotFramework,test
 Ruby,GPL
-Ruby HTML,GPL
+Ruby HTML,web
 Rust,GPL
 SaltStack,GPL
 SAS,GPL
@@ -305,6 +305,6 @@ XSD,GPL
 XSLT,GPL
 Xtend,GPL
 yacc,language construction
-YAML,data interchange
+YAML,serialization
 Zig,GPL
 zsh,GPL
