@@ -6,8 +6,8 @@ Agda,GPL
 AMPLE,GPL
 Ant,build
 ANTLR Grammar,language construction
-Apex Class,salesform
-Apex Trigger,salesform
+Apex Class,special
+Apex Trigger,special
 APL,GPL
 Arduino Sketch,robots
 AsciiDoc,markup
@@ -55,31 +55,31 @@ CSON,data interchange
 CSS,GUI
 CSV,markup
 Cucumber,test
-CUDA,special
+CUDA,high-performance
 Cython,GPL
 D,GPL
-DAL,GPL
+DAL,data base
 Dart,GPL
-Delphi Form,GPL
-DenizenScript,GPL
+Delphi Form,GUI
+DenizenScript,script
 dhall,GPL
-DIET,GPL
-diff,GPL
-DITA,GPL
-Dockerfile,GPL
-DOS Batch,GPL
-Drools,GPL
-DTD,GPL
-dtrace,GPL
-ECPP,GPL
-EEx,GPL
-EJS,GPL
+DIET,high-performance
+diff,text
+DITA,markup
+Dockerfile,docker
+DOS Batch,script
+Drools,rules engine
+DTD,markup
+dtrace,special
+ECPP,interlanguage
+EEx,interlanguage
+EJS,interlanguage
 Elixir,GPL
 Elm,GPL
-Embedded Crystal,GPL
-ERB,GPL
+Embedded Crystal,interlanguage
+ERB,interlanguage
 Erlang,GPL
-Expect,GPL
+Expect,test
 F#,GPL
 F# Script,GPL
 Fennel,GPL
