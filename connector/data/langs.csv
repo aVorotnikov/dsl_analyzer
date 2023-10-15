@@ -83,27 +83,27 @@ Expect,test
 F#,GPL
 F# Script,GPL
 Fennel,GPL
-Finite State Language,GPL
-Fish Shell,GPL
-Flatbuffers,GPL
+Finite State Language,automata
+Fish Shell,script
+Flatbuffers,serialization
 Forth,GPL
 Fortran 77,GPL
 Fortran 90,GPL
 Fortran 95,GPL
-Freemarker Template,GPL
-FXML,GPL
-GDScript,GPL
-Gencat NLS,GPL
-Glade,GPL
+Freemarker Template,GUI
+FXML,GUI
+GDScript,script
+Gencat NLS,math
+Glade,GUI
 Gleam,GPL
 GLSL,shaders
 Go,GPL
-Godot Resource,GPL
-Godot Scene,GPL
+Godot Resource,3d
+Godot Scene,3d
 Godot Shaders,shaders
-Gradle,GPL
-Grails,GPL
-GraphQL,GPL
+Gradle,build
+Grails,web
+GraphQL,data base
 Groovy,GPL
 Haml,GPL
 Handlebars,GPL
