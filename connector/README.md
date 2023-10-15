@@ -32,4 +32,5 @@
 * `key` - ключ лицензии
 * `name` - название лицензии
 * `url` - URL лицензии
-* `spdx` - SPDX id лицензии
+* `spdx_id` - SPDX id лицензии
+* `node_id` - node id
