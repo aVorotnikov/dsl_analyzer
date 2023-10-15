@@ -270,19 +270,19 @@ Umka,GPL
 Unity-Prefab,3d
 Vala,GPL
 Vala Header,GPL
-VB for Applications,GPL
-Velocity Template Language,GPL
-Verilog-SystemVerilog,GPL
-VHDL,GPL
-vim script,GPL
+VB for Applications,special
+Velocity Template Language,markup
+Verilog-SystemVerilog,hardware
+VHDL,hardware
+vim script,special
 Visual Basic,GPL
 Visual Basic .NET,GPL
-Visual Basic Script,GPL
-Visual Fox Pro,GPL
-Visual Studio Solution,GPL
-Visualforce Component,GPL
-Visualforce Page,GPL
-Vuejs Component,GPL
+Visual Basic Script,script
+Visual Fox Pro,data base
+Visual Studio Solution,build
+Visualforce Component,GUI
+Visualforce Page,GUI
+Vuejs Component,GUI
 Web Services Description,GPL
 WebAssembly,GPL
 WGSL,GPL
