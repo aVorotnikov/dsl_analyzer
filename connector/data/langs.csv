@@ -18,44 +18,44 @@ Assembly,GPL
 Asymptote,math
 AutoHotkey,script
 awk,text
-Bazel,GPL
-Blade,GPL
-Bourne Again Shell,GPL
-Bourne Shell,GPL
+Bazel,build
+Blade,web
+Bourne Again Shell,script
+Bourne Shell,script
 Brainfuck,GPL
-builder,GPL
+builder,GUI
 C,GPL
-C Shell,GPL
+C Shell,script
 C/C++ Header,GPL
 C#,GPL
-C# Designer,GPL
+C# Designer,GUI
 C# Generated,GPL
 C++,GPL
-Cairo,GPL
-Cake Build Script,GPL
+Cairo,GUI
+Cake Build Script,build
 Carbon,GPL
-CCS,GPL
+CCS,math
 Chapel,GPL
-Circom,GPL
+Circom,verification
 Clean,GPL
 Clojure,GPL
 ClojureC,GPL
 ClojureScript,GPL
-CMake,GPL
+CMake,build
 COBOL,GPL
-CoCoA 5,GPL
+CoCoA 5,math
 CoffeeScript,GPL
 ColdFusion,GPL
-ColdFusion CFScript,GPL
-Constraint Grammar,GPL
-Containerfile,GPL
-Coq,GPL
+ColdFusion CFScript,script
+Constraint Grammar,language construction
+Containerfile,docker
+Coq,verification
 Crystal,GPL
-CSON,GPL
-CSS,GPL
-CSV,GPL
-Cucumber,GPL
-CUDA,GPL
+CSON,data interchange
+CSS,GUI
+CSV,markup
+Cucumber,test
+CUDA,special
 Cython,GPL
 D,GPL
 DAL,GPL
