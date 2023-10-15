@@ -225,49 +225,49 @@ RobotFramework,test
 Ruby,GPL
 Ruby HTML,web
 Rust,GPL
-SaltStack,GPL
-SAS,GPL
-Sass,GPL
+SaltStack,config
+SAS,math
+Sass,web
 Scala,GPL
 Scheme,GPL
-SCSS,GPL
-sed,GPL
+SCSS,web
+sed,text
 SKILL,GPL
-Slice,GPL
-Slim,GPL
+Slice,3d
+Slim,markup
 Smalltalk,GPL
-Smarty,GPL
+Smarty,markup
 Softbridge Basic,GPL
-Solidity,GPL
-SparForte,GPL
-Specman e,GPL
+Solidity,smart contracts
+SparForte,math
+Specman e,verification
 SQL,data base
 SQL Data,data base
 SQL Stored Procedure,data base
-Squirrel,GPL
+Squirrel,script
 Standard ML,GPL
-Starlark,GPL
-Stata,GPL
-Stylus,GPL
-Svelte,GPL
-SVG,GPL
+Starlark,script
+Stata,math
+Stylus,web
+Svelte,GUI
+SVG,image
 Swift,GPL
-SWIG,GPL
+SWIG,interface
 TableGen,GPL
 Tcl/Tk,GPL
 TEAL,GPL
 TeX,markup
-Text,GPL
+Text,plain text
 Thrift,interface
-Titanium Style Sheet,GPL
-TNSDL,GPL
-TOML,GPL
-TTCN,GPL
-Twig,GPL
+Titanium Style Sheet,web
+TNSDL,interface
+TOML,config
+TTCN,test
+Twig,web
 TypeScript,GPL
-Typst,GPL
+Typst,markup
 Umka,GPL
-Unity-Prefab,GPL
+Unity-Prefab,3d
 Vala,GPL
 Vala Header,GPL
 VB for Applications,GPL
