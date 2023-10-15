@@ -283,28 +283,28 @@ Visual Studio Solution,build
 Visualforce Component,GUI
 Visualforce Page,GUI
 Vuejs Component,GUI
-Web Services Description,GPL
+Web Services Description,interface
 WebAssembly,GPL
-WGSL,GPL
-Windows Message File,GPL
-Windows Module Definition,GPL
-Windows Resource File,GPL
-WiX include,GPL
-WiX source,GPL
-WiX string localization,GPL
-WXML,GPL
-WXSS,GPL
-XAML,GPL
-xBase,GPL
-xBase Header,GPL
-XHTML,GPL
+WGSL,shaders
+Windows Message File,special
+Windows Module Definition,build
+Windows Resource File,special
+WiX include,special
+WiX source,script
+WiX string localization,special
+WXML,markup
+WXSS,markup
+XAML,serialization
+xBase,data base
+xBase Header,data base
+XHTML,markup
 XMI,markup
 XML,markup
-XQuery,GPL
-XSD,GPL
-XSLT,GPL
+XQuery,data base
+XSD,markup
+XSLT,web
 Xtend,GPL
 yacc,language construction
 YAML,serialization
 Zig,GPL
-zsh,GPL
+zsh,script
