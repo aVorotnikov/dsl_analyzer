@@ -119,7 +119,7 @@ IDL,interface
 Idris,GPL
 Igor Pro,math
 Imba,GPL
-INI,markup
+INI,config
 InstallShield,special
 IPL,image
 Jai,image
@@ -176,33 +176,33 @@ Objective-C,GPL
 Objective-C++,GPL
 OCaml,GPL
 Odin,GPL
-OpenCL,GPL
-OpenSCAD,GPL
-Oracle Forms,GPL
-Oracle PL/SQL,GPL
-Oracle Reports,GPL
-P4,GPL
+OpenCL,high-performance
+OpenSCAD,3d
+Oracle Forms,GUI
+Oracle PL/SQL,data base
+Oracle Reports,markup
+P4,data interchange
 Pascal,GPL
-Patran Command Language,GPL
-PEG,GPL
-peg.js,GPL
+Patran Command Language,math
+PEG,language construction
+peg.js,language construction
 Perl,GPL
-Pest,GPL
+Pest,test
 PHP,GPL
-Pig Latin,GPL
+Pig Latin,data base
 PL/I,GPL
 PL/M,GPL
-PlantUML,GPL
-PO File,GPL
-Pony,GPL
-PowerBuilder,GPL
+PlantUML,diagram
+PO File,text
+Pony,web
+PowerBuilder,diagram
 PowerShell,script
-ProGuard,GPL
-Prolog,GPL
-Properties,GPL
-Protocol Buffers,GPL
-Pug,GPL
-Puppet,GPL
+ProGuard,special
+Prolog,math
+Properties,config
+Protocol Buffers,serialization
+Pug,web
+Puppet,config
 PureScript,GPL
 Python,GPL
 QML,GUI
