@@ -1,8 +1,8 @@
 # Модуль коннектора
 Модуль коннектора предназначен для сбора данных.
-Использует [`ElasticSearch`](https://www.elastic.co/) и утилиту [`cloc`](https://github.com/AlDanial/cloc).
+Использует [`OpenSearch`](https://opensearch.org/) и утилиту [`cloc`](https://github.com/AlDanial/cloc).
 
-## Структура индекса Elasticsearch
+## Структура индекса OpenSearch
 ### Тип репозитория
 * `owner` - имя владельца репозитория
 * `repo` - название репозитория

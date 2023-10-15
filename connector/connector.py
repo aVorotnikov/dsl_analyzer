@@ -11,7 +11,6 @@ import sys
 import base64
 from enum import Enum
 from argparse import ArgumentParser
-from elasticsearch import Elasticsearch
 
 
 class Connector:
@@ -19,8 +18,7 @@ class Connector:
     alphabet = string.ascii_letters + string.digits
 
 
-    def __init__(self, tmp_dir, backup_dir, cloc_path, git_token,
-                 es_id, es_password, es_endpoint, cloc_timeout=60) -> None:
+    def __init__(self, tmp_dir, backup_dir, cloc_path, git_token, cloc_timeout=60) -> None:
         self.tmp_dir = tmp_dir
 
         self.backup_dir = backup_dir
@@ -43,7 +41,6 @@ class Connector:
             "X-GitHub-Api-Version" : "2022-11-28"
         }
 
-        # self.es_client = Elasticsearch(es_endpoint, api_key=(es_id, es_password))
         self.counter = 0
 
 
@@ -125,17 +122,14 @@ class Connector:
 
 
     def __repo_already_added(self, owner, repo):
-        # TODO: переделать на ElasticSearch
         return os.path.exists(f"{self.repos_dir}/{owner}/{repo}.json")
 
 
     def __license_already_added(self, key):
-        # TODO: переделать на ElasticSearch
         return os.path.exists(f"{self.licenses_dir}/{key}.json")
 
 
     def __language_already_added(self, name):
-        # TODO: переделать на ElasticSearch
         return os.path.exists(f"{self.langs_dir}/{str(base64.urlsafe_b64encode(name.encode('ascii')))[2:-1]}.json")
 
 
@@ -158,7 +152,6 @@ class Connector:
                 "name": lang,
                 "type": "GPL"
             })
-            # TODO: добавить язык в ElasticSearch
             with open(f"{self.langs_dir}/"
                       f"{str(base64.urlsafe_b64encode(lang.encode('ascii')))[2:-1]}.json", 'w') as jsonFile:
                 jsonFile.write(langJson)
@@ -166,7 +159,6 @@ class Connector:
         license = info["license"]
         if license and not self.__license_already_added(license["key"]):
             licenseJson = json.dumps(license)
-            # TODO: добавить лицензию в ElasticSearch
             with open(f"{self.licenses_dir}/{license['key']}.json", 'w') as jsonFile:
                 jsonFile.write(licenseJson)
 
@@ -187,8 +179,6 @@ class Connector:
             "language": info["language"],
             "languages": languages
         })
-
-        # TODO: добавить репозиторий в ElasticSearch
 
         with open(f"{owner_dir}/{repo}.json", 'w') as jsonFile:
             jsonFile.write(res)
@@ -215,12 +205,8 @@ if __name__ == "__main__":
     parser.add_argument("-b", "--backup", type=str, help="Backup directory")
     parser.add_argument("-c", "--cloc", type=str, help="Cloc executable path")
     parser.add_argument("-g", "--token", type=str, help="GitHub token")
-    parser.add_argument("-i", "--id", type=str, help="ElasticSearch ID")
-    parser.add_argument("-p", "--password", type=str, help="ElasticSearch password")
-    parser.add_argument("-e", "--es", type=str, help="ElasticSearch entry point")
     parser.add_argument("-o", "--timeout", type=int, default=60, help="Cloc analyzer timeout")
     args = parser.parse_args()
 
-    connector = Connector(args.tmp, args.backup, args.cloc, args.token,
-                          args.id, args.password, args.es, args.timeout)
+    connector = Connector(args.tmp, args.backup, args.cloc, args.token, args.timeout)
     connector.analyze()
