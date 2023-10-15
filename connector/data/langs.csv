@@ -96,11 +96,11 @@ GDScript,GPL
 Gencat NLS,GPL
 Glade,GPL
 Gleam,GPL
-GLSL,GPL
+GLSL,shaders
 Go,GPL
 Godot Resource,GPL
 Godot Scene,GPL
-Godot Shaders,GPL
+Godot Shaders,shaders
 Gradle,GPL
 Grails,GPL
 GraphQL,GPL
@@ -111,9 +111,9 @@ Harbour,GPL
 Haskell,GPL
 Haxe,GPL
 HCL,GPL
-HLSL,GPL
+HLSL,shaders
 Hoon,GPL
-HTML,GPL
+HTML,markup
 HTML EEx,GPL
 IDL,GPL
 Idris,GPL
@@ -129,8 +129,8 @@ JavaScript,GPL
 JavaServer Faces,GPL
 JCL,GPL
 Jinja Template,GPL
-JSON,GPL
-JSON5,GPL
+JSON,data interchange
+JSON5,data interchange
 JSP,GPL
 JSX,GPL
 Julia,GPL
@@ -141,7 +141,7 @@ Kotlin,GPL
 kvlang,GPL
 Lean,GPL
 LESS,GPL
-lex,GPL
+lex,language construction
 LFE,GPL
 Linker Script,GPL
 liquid,GPL
@@ -150,19 +150,19 @@ LLVM IR,GPL
 Logos,GPL
 Logtalk,GPL
 Lua,GPL
-m4,GPL
-make,GPL
+m4,text
+make,build
 Mako,GPL
-Markdown,GPL
-Mathematica,GPL
-MATLAB,GPL
+Markdown,markup
+Mathematica,math
+MATLAB,math
 Maven,GPL
 Mercury,GPL
 Meson,GPL
 Metal,GPL
 Modula3,GPL
 Mojo,GPL
-MSBuild script,GPL
+MSBuild script,build
 MUMPS,GPL
 Mustache,GPL
 MXML,GPL
@@ -196,7 +196,7 @@ PlantUML,GPL
 PO File,GPL
 Pony,GPL
 PowerBuilder,GPL
-PowerShell,GPL
+PowerShell,script
 ProGuard,GPL
 Prolog,GPL
 Properties,GPL
@@ -205,10 +205,10 @@ Pug,GPL
 Puppet,GPL
 PureScript,GPL
 Python,GPL
-QML,GPL
-Qt,GPL
-Qt Linguist,GPL
-Qt Project,GPL
+QML,GUI
+Qt,GUI
+Qt Linguist,GUI
+Qt Project,GUI
 R,GPL
 Racket,GPL
 Raku,GPL
@@ -241,9 +241,9 @@ Softbridge Basic,GPL
 Solidity,GPL
 SparForte,GPL
 Specman e,GPL
-SQL,GPL
-SQL Data,GPL
-SQL Stored Procedure,GPL
+SQL,data base
+SQL Data,data base
+SQL Stored Procedure,data base
 Squirrel,GPL
 Standard ML,GPL
 Starlark,GPL
@@ -256,7 +256,7 @@ SWIG,GPL
 TableGen,GPL
 Tcl/Tk,GPL
 TEAL,GPL
-TeX,GPL
+TeX,markup
 Text,GPL
 Thrift,GPL
 Titanium Style Sheet,GPL
@@ -298,13 +298,13 @@ XAML,GPL
 xBase,GPL
 xBase Header,GPL
 XHTML,GPL
-XMI,GPL
-XML,GPL
+XMI,markup
+XML,markup
 XQuery,GPL
 XSD,GPL
 XSLT,GPL
 Xtend,GPL
-yacc,GPL
-YAML,GPL
+yacc,language construction
+YAML,data interchange
 Zig,GPL
 zsh,GPL
