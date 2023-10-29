@@ -40,19 +40,19 @@ def main(ip, port, login, token, backup, create_index):
         "mappings": {
             "properties": {
                 "key": {
-                    "type": "text"
+                    "type": "keyword"
                 },
                 "name": {
-                    "type": "text"
+                    "type": "keyword"
                 },
                 "url": {
-                    "type": "text"
+                    "type": "keyword"
                 },
                 "spdx_id": {
-                    "type": "text"
+                    "type": "keyword"
                 },
                 "node_id": {
-                    "type": "text"
+                    "type": "keyword"
                 }
             }
         }

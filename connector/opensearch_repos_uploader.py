@@ -40,10 +40,10 @@ def main(ip, port, login, token, backup, create_index):
         "mappings": {
             "properties": {
                 "owner": {
-                    "type": "text"
+                    "type": "keyword"
                 },
                 "repo": {
-                    "type": "text"
+                    "type": "keyword"
                 },
                 "full_name": {
                     "type": "keyword"
