@@ -25,10 +25,10 @@ def main(ip, port, login, token, csv, create_index):
         "mappings": {
             "properties": {
                 "name": {
-                    "type": "text"
+                    "type": "keyword"
                 },
                 "type": {
-                    "type": "text"
+                    "type": "keyword"
                 }
             }
         }
