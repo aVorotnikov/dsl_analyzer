@@ -8,6 +8,9 @@ from opensearchpy import OpenSearch
 from argparse import ArgumentParser, BooleanOptionalAction
 
 
+NUMBER_OF_FIELDS = 2000
+
+
 def __read_jsons(dir):
     licenses = []
     for filename in os.listdir(dir):
@@ -94,6 +97,10 @@ def main(ip, port, login, token, backup, create_index):
     if create_index:
         response = client.indices.create(index_name, body=index_body)
         print(f"Creating index: {response}")
+        response = client.indices.put_settings(index=index_name, body={
+            "index.mapping.total_fields.limit": NUMBER_OF_FIELDS
+        })
+        print(f"Putting settings: {response}")
 
     parent_dir = f"{backup}/repos/"
     for subdir in os.listdir(parent_dir):
@@ -102,6 +109,9 @@ def main(ip, port, login, token, backup, create_index):
                 jsons = __read_jsons(subdirPath)
                 for jsonDoc in jsons:
                     id = jsonDoc["full_name"]
+                    # TODO: Разобраться почему в update_at встречается целое число
+                    if not issubclass(type(jsonDoc["updated_at"]), str):
+                        jsonDoc["updated_at"] = jsonDoc["pushed_at"]
                     response = client.index(
                         index = index_name,
                         body = jsonDoc,
