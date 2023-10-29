@@ -172,9 +172,9 @@ class Connector:
             "forks": info["forks_count"],
             "stargazers": info["stargazers_count"],
             "watchers": info["watchers_count"],
-            "pushed_at": info["updated_at"],
-            "created_at": info["updated_at"],
-            "updated_at": info["stargazers_count"],
+            "pushed_at": info["pushed_at"],
+            "created_at": info["created_at"],
+            "updated_at": info["updated_at"],
             "license_key": license["key"] if license else "No license",
             "language": info["language"],
             "languages": languages
