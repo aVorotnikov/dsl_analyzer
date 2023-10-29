@@ -12,16 +12,16 @@ NUMBER_OF_FIELDS = 2000
 
 
 def __read_jsons(dir):
-    licenses = []
+    repos = []
     for filename in os.listdir(dir):
         filepath = f"{dir}/{filename}"
         if os.path.isfile(filepath):
             with open(filepath, "r") as jsonFile:
                 try:
-                    licenses.append(json.load(jsonFile))
+                    repos.append(json.load(jsonFile))
                 except Exception:
                     print(f"Bad json file '{filepath}'", file=sys.stderr)
-    return licenses
+    return repos
 
 
 def main(ip, port, login, token, backup, create_index):
@@ -78,8 +78,7 @@ def main(ip, port, login, token, backup, create_index):
                     "format": "date_optional_time"
                 },
                 "updated_at": {
-                    "type": "date",
-                    "format": "date_optional_time"
+                    "type": "integer"
                 },
                 "license_key": {
                     "type": "keyword"
@@ -109,9 +108,6 @@ def main(ip, port, login, token, backup, create_index):
                 jsons = __read_jsons(subdirPath)
                 for jsonDoc in jsons:
                     id = jsonDoc["full_name"]
-                    # TODO: Разобраться почему в update_at встречается целое число
-                    if not issubclass(type(jsonDoc["updated_at"]), str):
-                        jsonDoc["updated_at"] = jsonDoc["pushed_at"]
                     response = client.index(
                         index = index_name,
                         body = jsonDoc,
@@ -119,7 +115,7 @@ def main(ip, port, login, token, backup, create_index):
                         refresh = False
                     )
                     print(f"Adding document: {response}")
-                    print(response)
+                    number += 1
 
 
 if __name__ == "__main__":
