@@ -35,7 +35,8 @@ def main(ip, port, login, token, backup, langs_csv, create_index, delete_index):
     index_body = {
         "settings": {
             "index": {
-                "number_of_shards": 4
+                "number_of_shards": 1,
+                "number_of_replicas": 0
             },
         },
         "mappings": {
