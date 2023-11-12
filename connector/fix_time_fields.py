@@ -53,6 +53,10 @@ class BackupFixer:
                 print(f"Failed to find: ({owner}, {repo})")
                 self.unfound.append((owner, repo))
                 return None
+            elif 451 == response.status_code:
+                print(f"Failed to access: ({owner}, {repo})")
+                self.unfound.append((owner, repo))
+                return None
             else:
                 print(f"Unexpected error: {response}")
         return response.json()
