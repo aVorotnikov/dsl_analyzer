@@ -4,11 +4,9 @@
 import os
 import sys
 import json
+from csv import DictReader
 from opensearchpy import OpenSearch
 from argparse import ArgumentParser, BooleanOptionalAction
-
-
-NUMBER_OF_FIELDS = 2000
 
 
 def __read_jsons(dir):
@@ -24,7 +22,7 @@ def __read_jsons(dir):
     return repos
 
 
-def main(ip, port, login, token, backup, create_index):
+def main(ip, port, login, token, backup, langs_csv, create_index):
     client = OpenSearch(
         hosts = [{'host': ip, 'port': port}],
         http_auth = (login, token),
@@ -58,7 +56,7 @@ def main(ip, port, login, token, backup, create_index):
                     "type": "keyword"
                 },
                 "size": {
-                    "type": "integer"
+                    "type": "long"
                 },
                 "forks": {
                     "type": "integer"
@@ -87,26 +85,65 @@ def main(ip, port, login, token, backup, create_index):
                     "type": "keyword"
                 },
                 "languages": {
-                    "type": "object"
+                    "properties": {
+                        "language": {
+                            "properties":
+                            {
+                                "name": {
+                                    "type": "keyword"
+                                },
+                                "type": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "files": {
+                            "type": "integer"
+                        },
+                        "blank": {
+                            "type": "long"
+                        },
+                        "comment": {
+                            "type": "long"
+                        },
+                        "code": {
+                            "type": "long"
+                        }
+                    }
                 }
             }
         }
     }
 
     if create_index:
+        response = client.indices.delete(index_name)
         response = client.indices.create(index_name, body=index_body)
         print(f"Creating index: {response}")
-        response = client.indices.put_settings(index=index_name, body={
-            "index.mapping.total_fields.limit": NUMBER_OF_FIELDS
-        })
-        print(f"Putting settings: {response}")
+
+    languageTypes = dict()
+    with open(langs_csv, 'r') as csv_file:
+        reader = DictReader(csv_file)
+        for row in reader:
+            languageTypes[row["name"]] = row["type"]
 
     parent_dir = f"{backup}/repos/"
+    repo_count = 0
     for subdir in os.listdir(parent_dir):
             subdirPath = f"{parent_dir}/{subdir}"
             if os.path.isdir(subdirPath):
                 jsons = __read_jsons(subdirPath)
                 for jsonDoc in jsons:
+                    # Correct languages data type:
+                    languagesDict = jsonDoc["languages"]
+                    languagesArray = []
+                    for language, info in languagesDict.items():
+                        arrayInfo = info.copy()
+                        arrayInfo["language"] = {
+                            "name": language,
+                            "type": languageTypes[language] if language in languageTypes else "GPL"
+                        }
+                        languagesArray.append(arrayInfo)
+                    jsonDoc["languages"] = languagesArray
                     id = jsonDoc["full_name"]
                     response = client.index(
                         index = index_name,
@@ -115,7 +152,8 @@ def main(ip, port, login, token, backup, create_index):
                         refresh = False
                     )
                     print(f"Adding document: {response}")
-                    number += 1
+                    repo_count += 1
+    print(f"Added repos: {repo_count}")
 
 
 if __name__ == "__main__":
@@ -123,11 +161,12 @@ if __name__ == "__main__":
         prog="opensearch_repos_uploader.py",
         description="Module to upload repos data to OpenSearch")
     parser.add_argument("-b", "--backup", type=str, help="Backup directory")
+    parser.add_argument("-c", "--csv", type=str, help="CSV with languages info")
     parser.add_argument("-i", "--ip", type=str, help="OpenSearch IP")
     parser.add_argument("-p", "--port", type=str, help="OpenSearch port")
     parser.add_argument("-l", "--login", type=str, help="OpenSearch login")
     parser.add_argument("-t", "--token", type=str, help="OpenSearch token")
-    parser.add_argument("-c", "--create", action=BooleanOptionalAction, default=False, help="Create index or not")
+    parser.add_argument( "--create", action=BooleanOptionalAction, default=False, help="Create index or not")
     args = parser.parse_args()
 
-    main(args.ip, args.port, args.login, args.token, args.backup, args.create)
+    main(args.ip, args.port, args.login, args.token, args.backup, args.csv, args.create)
