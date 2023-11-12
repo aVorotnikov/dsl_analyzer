@@ -1,310 +1,310 @@
 name,type
-ABAP,GPL
-ActionScript,GPL
+ABAP,data base
+ActionScript,web
 Ada,GPL
 Agda,GPL
 AMPLE,GPL
-Ant,GPL
-ANTLR Grammar,GPL
-Apex Class,GPL
-Apex Trigger,GPL
+Ant,build
+ANTLR Grammar,language construction
+Apex Class,special
+Apex Trigger,special
 APL,GPL
-Arduino Sketch,GPL
-AsciiDoc,GPL
-ASP,GPL
-ASP.NET,GPL
+Arduino Sketch,robots
+AsciiDoc,markup
+ASP,web
+ASP.NET,web
 AspectJ,GPL
 Assembly,GPL
-Asymptote,GPL
-AutoHotkey,GPL
-awk,GPL
-Bazel,GPL
-Blade,GPL
-Bourne Again Shell,GPL
-Bourne Shell,GPL
+Asymptote,math
+AutoHotkey,script
+awk,text
+Bazel,build
+Blade,web
+Bourne Again Shell,script
+Bourne Shell,script
 Brainfuck,GPL
-builder,GPL
+builder,GUI
 C,GPL
-C Shell,GPL
+C Shell,script
 C/C++ Header,GPL
 C#,GPL
-C# Designer,GPL
+C# Designer,GUI
 C# Generated,GPL
 C++,GPL
-Cairo,GPL
-Cake Build Script,GPL
+Cairo,image
+Cake Build Script,build
 Carbon,GPL
-CCS,GPL
+CCS,math
 Chapel,GPL
-Circom,GPL
+Circom,verification
 Clean,GPL
 Clojure,GPL
 ClojureC,GPL
 ClojureScript,GPL
-CMake,GPL
+CMake,build
 COBOL,GPL
-CoCoA 5,GPL
+CoCoA 5,math
 CoffeeScript,GPL
 ColdFusion,GPL
-ColdFusion CFScript,GPL
-Constraint Grammar,GPL
-Containerfile,GPL
-Coq,GPL
+ColdFusion CFScript,script
+Constraint Grammar,language construction
+Containerfile,docker
+Coq,verification
 Crystal,GPL
-CSON,GPL
-CSS,GPL
-CSV,GPL
-Cucumber,GPL
-CUDA,GPL
+CSON,data interchange
+CSS,GUI
+CSV,markup
+Cucumber,test
+CUDA,high-performance
 Cython,GPL
 D,GPL
-DAL,GPL
+DAL,data base
 Dart,GPL
-Delphi Form,GPL
-DenizenScript,GPL
+Delphi Form,GUI
+DenizenScript,script
 dhall,GPL
-DIET,GPL
-diff,GPL
-DITA,GPL
-Dockerfile,GPL
-DOS Batch,GPL
-Drools,GPL
-DTD,GPL
-dtrace,GPL
-ECPP,GPL
-EEx,GPL
-EJS,GPL
+DIET,high-performance
+diff,text
+DITA,markup
+Dockerfile,docker
+DOS Batch,script
+Drools,rules engine
+DTD,markup
+dtrace,special
+ECPP,interlanguage
+EEx,interlanguage
+EJS,interlanguage
 Elixir,GPL
 Elm,GPL
-Embedded Crystal,GPL
-ERB,GPL
+Embedded Crystal,interlanguage
+ERB,interlanguage
 Erlang,GPL
-Expect,GPL
+Expect,test
 F#,GPL
 F# Script,GPL
 Fennel,GPL
-Finite State Language,GPL
-Fish Shell,GPL
-Flatbuffers,GPL
+Finite State Language,automata
+Fish Shell,script
+Flatbuffers,serialization
 Forth,GPL
 Fortran 77,GPL
 Fortran 90,GPL
 Fortran 95,GPL
-Freemarker Template,GPL
-FXML,GPL
-GDScript,GPL
-Gencat NLS,GPL
-Glade,GPL
+Freemarker Template,GUI
+FXML,GUI
+GDScript,script
+Gencat NLS,math
+Glade,GUI
 Gleam,GPL
-GLSL,GPL
+GLSL,shaders
 Go,GPL
-Godot Resource,GPL
-Godot Scene,GPL
-Godot Shaders,GPL
-Gradle,GPL
-Grails,GPL
-GraphQL,GPL
+Godot Resource,3d
+Godot Scene,3d
+Godot Shaders,shaders
+Gradle,build
+Grails,web
+GraphQL,data base
 Groovy,GPL
-Haml,GPL
-Handlebars,GPL
+Haml,markup
+Handlebars,markup
 Harbour,GPL
 Haskell,GPL
 Haxe,GPL
 HCL,GPL
-HLSL,GPL
+HLSL,shaders
 Hoon,GPL
-HTML,GPL
-HTML EEx,GPL
-IDL,GPL
+HTML,markup
+HTML EEx,markup
+IDL,interface
 Idris,GPL
-Igor Pro,GPL
+Igor Pro,math
 Imba,GPL
-INI,GPL
-InstallShield,GPL
-IPL,GPL
-Jai,GPL
-Jam,GPL
+INI,config
+InstallShield,special
+IPL,image
+Jai,image
+Jam,build
 Java,GPL
 JavaScript,GPL
-JavaServer Faces,GPL
-JCL,GPL
-Jinja Template,GPL
-JSON,GPL
-JSON5,GPL
-JSP,GPL
-JSX,GPL
+JavaServer Faces,web
+JCL,script
+Jinja Template,web
+JSON,data interchange
+JSON5,data interchange
+JSP,web
+JSX,markup
 Julia,GPL
 Jupyter Notebook,GPL
 Kermit,GPL
-Korn Shell,GPL
+Korn Shell,script
 Kotlin,GPL
-kvlang,GPL
-Lean,GPL
-LESS,GPL
-lex,GPL
-LFE,GPL
-Linker Script,GPL
-liquid,GPL
+kvlang,GUI
+Lean,logic
+LESS,GUI
+lex,language construction
+LFE,script
+Linker Script,build
+liquid,markup
 Lisp,GPL
-LLVM IR,GPL
+LLVM IR,language construction
 Logos,GPL
 Logtalk,GPL
 Lua,GPL
-m4,GPL
-make,GPL
+m4,text
+make,build
 Mako,GPL
-Markdown,GPL
-Mathematica,GPL
-MATLAB,GPL
-Maven,GPL
-Mercury,GPL
-Meson,GPL
-Metal,GPL
+Markdown,markup
+Mathematica,math
+MATLAB,math
+Maven,build
+Mercury,math
+Meson,build
+Metal,3d
 Modula3,GPL
-Mojo,GPL
-MSBuild script,GPL
-MUMPS,GPL
-Mustache,GPL
-MXML,GPL
-NAnt script,GPL
+Mojo,web
+MSBuild script,build
+MUMPS,data base
+Mustache,markup
+MXML,markup
+NAnt script,build
 Nemerle,GPL
 NetLogo,GPL
 Nim,GPL
 Nix,GPL
-Nunjucks,GPL
+Nunjucks,markup
 Objective-C,GPL
 Objective-C++,GPL
 OCaml,GPL
 Odin,GPL
-OpenCL,GPL
-OpenSCAD,GPL
-Oracle Forms,GPL
-Oracle PL/SQL,GPL
-Oracle Reports,GPL
-P4,GPL
+OpenCL,high-performance
+OpenSCAD,3d
+Oracle Forms,GUI
+Oracle PL/SQL,data base
+Oracle Reports,markup
+P4,data interchange
 Pascal,GPL
-Patran Command Language,GPL
-PEG,GPL
-peg.js,GPL
+Patran Command Language,math
+PEG,language construction
+peg.js,language construction
 Perl,GPL
-Pest,GPL
+Pest,test
 PHP,GPL
-Pig Latin,GPL
+Pig Latin,data base
 PL/I,GPL
 PL/M,GPL
-PlantUML,GPL
-PO File,GPL
-Pony,GPL
-PowerBuilder,GPL
-PowerShell,GPL
-ProGuard,GPL
-Prolog,GPL
-Properties,GPL
-Protocol Buffers,GPL
-Pug,GPL
-Puppet,GPL
+PlantUML,diagram
+PO File,text
+Pony,web
+PowerBuilder,diagram
+PowerShell,script
+ProGuard,special
+Prolog,logic
+Properties,config
+Protocol Buffers,serialization
+Pug,web
+Puppet,config
 PureScript,GPL
 Python,GPL
-QML,GPL
-Qt,GPL
-Qt Linguist,GPL
-Qt Project,GPL
+QML,GUI
+Qt,GUI
+Qt Linguist,GUI
+Qt Project,GUI
 R,GPL
 Racket,GPL
 Raku,GPL
-RAML,GPL
+RAML,serialization
 RapydScript,GPL
-Razor,GPL
+Razor,markup
 ReasonML,GPL
-ReScript,GPL
-reStructuredText,GPL
+ReScript,web
+reStructuredText,markup
 Rexx,GPL
-Ring,GPL
-Rmd,GPL
-RobotFramework,GPL
+Ring,web
+Rmd,markup
+RobotFramework,test
 Ruby,GPL
-Ruby HTML,GPL
+Ruby HTML,web
 Rust,GPL
-SaltStack,GPL
-SAS,GPL
-Sass,GPL
+SaltStack,config
+SAS,math
+Sass,web
 Scala,GPL
 Scheme,GPL
-SCSS,GPL
-sed,GPL
+SCSS,web
+sed,text
 SKILL,GPL
-Slice,GPL
-Slim,GPL
+Slice,3d
+Slim,markup
 Smalltalk,GPL
-Smarty,GPL
+Smarty,markup
 Softbridge Basic,GPL
-Solidity,GPL
-SparForte,GPL
-Specman e,GPL
-SQL,GPL
-SQL Data,GPL
-SQL Stored Procedure,GPL
-Squirrel,GPL
+Solidity,smart contracts
+SparForte,math
+Specman e,verification
+SQL,data base
+SQL Data,data base
+SQL Stored Procedure,data base
+Squirrel,script
 Standard ML,GPL
-Starlark,GPL
-Stata,GPL
-Stylus,GPL
-Svelte,GPL
-SVG,GPL
+Starlark,script
+Stata,math
+Stylus,web
+Svelte,GUI
+SVG,image
 Swift,GPL
-SWIG,GPL
+SWIG,interface
 TableGen,GPL
 Tcl/Tk,GPL
 TEAL,GPL
-TeX,GPL
-Text,GPL
-Thrift,GPL
-Titanium Style Sheet,GPL
-TNSDL,GPL
-TOML,GPL
-TTCN,GPL
-Twig,GPL
+TeX,markup
+Text,plain text
+Thrift,interface
+Titanium Style Sheet,web
+TNSDL,interface
+TOML,config
+TTCN,test
+Twig,web
 TypeScript,GPL
-Typst,GPL
+Typst,markup
 Umka,GPL
-Unity-Prefab,GPL
+Unity-Prefab,3d
 Vala,GPL
 Vala Header,GPL
-VB for Applications,GPL
-Velocity Template Language,GPL
-Verilog-SystemVerilog,GPL
-VHDL,GPL
-vim script,GPL
+VB for Applications,special
+Velocity Template Language,markup
+Verilog-SystemVerilog,hardware
+VHDL,hardware
+vim script,special
 Visual Basic,GPL
 Visual Basic .NET,GPL
-Visual Basic Script,GPL
-Visual Fox Pro,GPL
-Visual Studio Solution,GPL
-Visualforce Component,GPL
-Visualforce Page,GPL
-Vuejs Component,GPL
-Web Services Description,GPL
+Visual Basic Script,script
+Visual Fox Pro,data base
+Visual Studio Solution,build
+Visualforce Component,GUI
+Visualforce Page,GUI
+Vuejs Component,GUI
+Web Services Description,interface
 WebAssembly,GPL
-WGSL,GPL
-Windows Message File,GPL
-Windows Module Definition,GPL
-Windows Resource File,GPL
-WiX include,GPL
-WiX source,GPL
-WiX string localization,GPL
-WXML,GPL
-WXSS,GPL
-XAML,GPL
-xBase,GPL
-xBase Header,GPL
-XHTML,GPL
-XMI,GPL
-XML,GPL
-XQuery,GPL
-XSD,GPL
-XSLT,GPL
+WGSL,shaders
+Windows Message File,special
+Windows Module Definition,build
+Windows Resource File,special
+WiX include,special
+WiX source,script
+WiX string localization,special
+WXML,markup
+WXSS,markup
+XAML,serialization
+xBase,data base
+xBase Header,data base
+XHTML,markup
+XMI,markup
+XML,markup
+XQuery,data base
+XSD,markup
+XSLT,web
 Xtend,GPL
-yacc,GPL
-YAML,GPL
+yacc,language construction
+YAML,serialization
 Zig,GPL
-zsh,GPL
+zsh,script
