@@ -6,7 +6,7 @@ from opensearchpy import OpenSearch
 from argparse import ArgumentParser, BooleanOptionalAction
 
 
-def main(ip, port, login, token, csv, create_index):
+def main(ip, port, login, token, csv, create_index, delete_index):
     client = OpenSearch(
         hosts = [{'host': ip, 'port': port}],
         http_auth = (login, token),
@@ -19,7 +19,8 @@ def main(ip, port, login, token, csv, create_index):
     index_body = {
         "settings": {
             "index": {
-                "number_of_shards": 4
+                "number_of_shards": 1,
+                "number_of_replicas": 0
             },
         },
         "mappings": {
@@ -33,6 +34,10 @@ def main(ip, port, login, token, csv, create_index):
             }
         }
     }
+
+    if delete_index:
+        response = client.indices.delete(index_name)
+        print(f"Deleting index: {response}")
 
     if create_index:
         response = client.indices.create(index_name, body=index_body)
@@ -62,6 +67,7 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--login", type=str, help="OpenSearch login")
     parser.add_argument("-t", "--token", type=str, help="OpenSearch token")
     parser.add_argument("-c", "--create", action=BooleanOptionalAction, default=False, help="Create index or not")
+    parser.add_argument( "--delete", action=BooleanOptionalAction, default=False, help="Delete index or not")
     args = parser.parse_args()
 
-    main(args.ip, args.port, args.login, args.token, args.csv, args.create)
+    main(args.ip, args.port, args.login, args.token, args.csv, args.create, args.delete)
