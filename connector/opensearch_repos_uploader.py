@@ -116,7 +116,7 @@ def main(ip, port, login, token, backup, langs_csv, create_index):
     }
 
     if create_index:
-        response = client.indices.delete(index_name)
+        # response = client.indices.delete(index_name)
         response = client.indices.create(index_name, body=index_body)
         print(f"Creating index: {response}")
 
@@ -129,30 +129,30 @@ def main(ip, port, login, token, backup, langs_csv, create_index):
     parent_dir = f"{backup}/repos/"
     repo_count = 0
     for subdir in os.listdir(parent_dir):
-            subdirPath = f"{parent_dir}/{subdir}"
-            if os.path.isdir(subdirPath):
-                jsons = __read_jsons(subdirPath)
-                for jsonDoc in jsons:
-                    # Correct languages data type:
-                    languagesDict = jsonDoc["languages"]
-                    languagesArray = []
-                    for language, info in languagesDict.items():
-                        arrayInfo = info.copy()
-                        arrayInfo["language"] = {
-                            "name": language,
-                            "type": languageTypes[language] if language in languageTypes else "GPL"
-                        }
-                        languagesArray.append(arrayInfo)
-                    jsonDoc["languages"] = languagesArray
-                    id = jsonDoc["full_name"]
-                    response = client.index(
-                        index = index_name,
-                        body = jsonDoc,
-                        id = id,
-                        refresh = False
-                    )
-                    print(f"Adding document: {response}")
-                    repo_count += 1
+        subdirPath = f"{parent_dir}/{subdir}"
+        if os.path.isdir(subdirPath):
+            jsons = __read_jsons(subdirPath)
+            for jsonDoc in jsons:
+                # Correct languages data type:
+                languagesDict = jsonDoc["languages"]
+                languagesArray = []
+                for language, info in languagesDict.items():
+                    arrayInfo = info.copy()
+                    arrayInfo["language"] = {
+                        "name": language,
+                        "type": languageTypes[language] if language in languageTypes else "GPL"
+                    }
+                    languagesArray.append(arrayInfo)
+                jsonDoc["languages"] = languagesArray
+                id = jsonDoc["full_name"]
+                response = client.index(
+                    index = index_name,
+                    body = jsonDoc,
+                    id = id,
+                    refresh = False
+                )
+                print(f"Adding document: {response}")
+                repo_count += 1
     print(f"Added repos: {repo_count}")
 
 
