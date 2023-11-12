@@ -80,8 +80,15 @@ def main(ip, port, login, token, backup, langs_csv, create_index, delete_index):
                     "type": "date",
                     "format": "date_optional_time"
                 },
-                "license_key": {
-                    "type": "keyword"
+                "license": {
+                    "properties": {
+                        "key": {
+                            "type": "keyword"
+                        },
+                        "name": {
+                            "type": "keyword"
+                        }
+                    }
                 },
                 "language": {
                     "type": "keyword"
@@ -89,8 +96,7 @@ def main(ip, port, login, token, backup, langs_csv, create_index, delete_index):
                 "languages": {
                     "properties": {
                         "language": {
-                            "properties":
-                            {
+                            "properties": {
                                 "name": {
                                     "type": "keyword"
                                 },
@@ -125,11 +131,19 @@ def main(ip, port, login, token, backup, langs_csv, create_index, delete_index):
         response = client.indices.create(index_name, body=index_body)
         print(f"Creating index: {response}")
 
-    languageTypes = dict()
+    language_types = dict()
     with open(langs_csv, 'r') as csv_file:
         reader = DictReader(csv_file)
         for row in reader:
-            languageTypes[row["name"]] = row["type"]
+            language_types[row["name"]] = row["type"]
+
+    licenses_names = dict()
+    licenses_dir = f"{backup}/licenses/"
+    licenses_json = __read_jsons(licenses_dir)
+    for license_json in licenses_json:
+        licenses_names[license_json["key"]] = license_json["name"]
+    licenses_names["No license"] = "Без лицензии"
+    licenses_names["other"] = "Нестандартная"
 
     parent_dir = f"{backup}/repos/"
     repo_count = 0
@@ -142,17 +156,27 @@ def main(ip, port, login, token, backup, langs_csv, create_index, delete_index):
                 if type(json_doc["updated_at"]) != str:
                     print(f"Ignore document due to time fields: {json_doc['owner']}/{json_doc['repo']}")
                     continue
-                # Correct languages data type:
+
+                # Correct languages data type
                 languagesDict = json_doc["languages"]
                 languagesArray = []
                 for language, info in languagesDict.items():
                     arrayInfo = info.copy()
                     arrayInfo["language"] = {
                         "name": language,
-                        "type": languageTypes[language] if language in languageTypes else "GPL"
+                        "type": language_types[language] if language in language_types else "GPL"
                     }
                     languagesArray.append(arrayInfo)
                 json_doc["languages"] = languagesArray
+
+                # Correct license
+                license_key = json_doc["license_key"]
+                del json_doc["license_key"]
+                json_doc["license"] = {
+                    "key": license_key,
+                    "name": licenses_names[license_key]
+                }
+
                 id = json_doc["full_name"]
                 response = client.index(
                     index = index_name,
