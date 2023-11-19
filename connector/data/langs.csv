@@ -20,6 +20,8 @@ AutoHotkey,script
 awk,text
 Bazel,build
 bc,math
+BizTalk Orchestration,interface
+BizTalk Pipeline,interface
 Blade,web
 Bourne Again Shell,script
 Bourne Shell,script
@@ -89,11 +91,13 @@ Fennel,GPL
 Finite State Language,automata
 Fish Shell,script
 Flatbuffers,serialization
+Focus,GPL
 Forth,GPL
 Fortran 77,GPL
 Fortran 90,GPL
 Fortran 95,GPL
 Freemarker Template,GUI
+Futhark,GPL
 FXML,GUI
 GDScript,script
 Gencat NLS,math
@@ -138,18 +142,22 @@ JSON5,data interchange
 JSP,web
 JSX,markup
 Julia,GPL
+Juniper Junos,special
 Jupyter Notebook,GPL
 Kermit,GPL
 Korn Shell,script
 Kotlin,GPL
 kvlang,GUI
 Lean,logic
+Lem,GPL
 LESS,GUI
 lex,language construction
 LFE,script
 Linker Script,build
 liquid,markup
 Lisp,GPL
+Literate Idris,GPL
+LiveLink OScript,script
 LLVM IR,language construction
 Logos,GPL
 Logtalk,GPL
@@ -269,9 +277,11 @@ Teamcenter mth,data base
 TeX,markup
 Text,plain text
 Thrift,interface
+TITAN Project File Information,config
 Titanium Style Sheet,web
 TNSDL,interface
 TOML,config
+tspeg,language construction
 TTCN,test
 Twig,web
 TypeScript,GPL
