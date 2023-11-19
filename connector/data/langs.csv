@@ -19,10 +19,12 @@ Asymptote,math
 AutoHotkey,script
 awk,text
 Bazel,build
+bc,math
 Blade,web
 Bourne Again Shell,script
 Bourne Shell,script
 Brainfuck,GPL
+BrightScript,special
 builder,GUI
 C,GPL
 C Shell,script
@@ -62,6 +64,7 @@ DAL,data base
 Dart,GPL
 Delphi Form,GUI
 DenizenScript,script
+Derw,GPL
 dhall,GPL
 DIET,high-performance
 diff,text
@@ -108,6 +111,7 @@ Groovy,GPL
 Haml,markup
 Handlebars,markup
 Harbour,GPL
+Hare,GPL
 Haskell,GPL
 Haxe,GPL
 HCL,GPL
@@ -167,6 +171,7 @@ MUMPS,data base
 Mustache,markup
 MXML,markup
 NAnt script,build
+NASTRAN DMAP,math
 Nemerle,GPL
 NetLogo,GPL
 Nim,GPL
@@ -175,6 +180,7 @@ Nunjucks,markup
 Objective-C,GPL
 Objective-C++,GPL
 OCaml,GPL
+Octave,math
 Odin,GPL
 OpenCL,high-performance
 OpenSCAD,3d
@@ -186,6 +192,7 @@ Pascal,GPL
 Patran Command Language,math
 PEG,language construction
 peg.js,language construction
+peggy,special
 Perl,GPL
 Pest,test
 PHP,GPL
@@ -249,6 +256,7 @@ Standard ML,GPL
 Starlark,script
 Stata,math
 Stylus,web
+SugarSS,verification
 Svelte,GUI
 SVG,image
 Swift,GPL
@@ -256,6 +264,8 @@ SWIG,interface
 TableGen,GPL
 Tcl/Tk,GPL
 TEAL,GPL
+Teamcenter met,data base
+Teamcenter mth,data base
 TeX,markup
 Text,plain text
 Thrift,interface
@@ -294,6 +304,7 @@ WiX source,script
 WiX string localization,special
 WXML,markup
 WXSS,markup
+X++,special
 XAML,serialization
 xBase,data base
 xBase Header,data base
